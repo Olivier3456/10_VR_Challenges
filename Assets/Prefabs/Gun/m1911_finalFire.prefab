@@ -93,6 +93,37 @@ Transform:
   m_Father: {fileID: 1901430947590684573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5553067356013153884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6690285934051610673}
+  m_Layer: 0
+  m_Name: Gun_barrel_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6690285934051610673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553067356013153884}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.1286, y: 0.05760002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7219783966325388720}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &7515203574729127080
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +261,7 @@ Transform:
   - {fileID: 1901430947590684573}
   - {fileID: 6668917811246158289}
   - {fileID: 1920237577}
+  - {fileID: 6690285934051610673}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -383,7 +415,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 1920237577}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -450,8 +482,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95041f3bc74c6cb4190d65cff1afe42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 5305236849871195268}
+  _anim: {fileID: 5305236849871195268}
   _gunAudioSource: {fileID: 5305236849871195270}
+  _endGunBarrel: {fileID: 6690285934051610673}
+  _impactParticle: {fileID: 5087934736749423397, guid: b5bb0a197045b504c97e5fbeafc1554a,
+    type: 3}
+  _gunFireParticle: {fileID: 2184011308396976211, guid: 2a985d55c32bbe647975f7ac9fa1bbb7,
+    type: 3}
+  _gunForce: 0.5
 --- !u!82 &5305236849871195270
 AudioSource:
   m_ObjectHideFlags: 0

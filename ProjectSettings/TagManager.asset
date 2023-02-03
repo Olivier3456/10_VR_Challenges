@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Hands
+  - Canette
   layers:
   - Default
   - TransparentFX
