@@ -37,10 +37,9 @@ public class Gun : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100))
             {
                 impactPosition = hit.point;
-                
-                ParticleSystem sparks = Instantiate(_impactParticle, impactPosition, Quaternion.identity);
-                sparks.transform.forward = hit.normal;   // (Oriente les particules à angle droit par rapport à la surface d'impact.)
-                sparks.Play();
+                _impactParticle.transform.position = impactPosition;
+                _impactParticle.transform.forward = hit.normal;   // (Oriente les particules à angle droit par rapport à la surface d'impact.)
+                _impactParticle.Play();
 
                 
 
