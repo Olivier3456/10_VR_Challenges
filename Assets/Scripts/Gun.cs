@@ -23,10 +23,10 @@ public class Gun : MonoBehaviour
             _gunAudioSource.Play();
 
             GunSceneGameManager.Instance.ShotFired();
-
-            ParticleSystem gFParticle = Instantiate(_gunFireParticle, _endGunBarrel.position, Quaternion.identity);
-            gFParticle.transform.forward = _endGunBarrel.forward;
-            gFParticle.Play();
+          
+            _gunFireParticle.transform.position = _endGunBarrel.position;
+            _gunFireParticle.transform.forward = _endGunBarrel.forward;
+            _gunFireParticle.Play();
 
 
 
