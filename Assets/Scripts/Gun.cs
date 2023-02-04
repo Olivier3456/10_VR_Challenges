@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Animator _anim;
     [SerializeField] private AudioSource _gunAudioSource;
-    [SerializeField] private Transform _endGunBarrel;
+    [SerializeField] private Transform _endGunBarrel;    
     [SerializeField] private ParticleSystem _impactParticle;
     [SerializeField] private ParticleSystem _gunFireParticle;
     [SerializeField] private float _gunForce = 1f;

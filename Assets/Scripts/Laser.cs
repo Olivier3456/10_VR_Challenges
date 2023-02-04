@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] private Transform _endGunBarrel;
+    [SerializeField] private Transform _laserOrigin;
     private MeshRenderer _laserRenderer;
 
     private Vector3 impactPosition;
@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
 
     void Update()
     {
-        Ray ray = new Ray(_endGunBarrel.position, _endGunBarrel.forward); // (Le raycast part du bout du canon.)
+        Ray ray = new Ray(_laserOrigin.position, _laserOrigin.forward); // (Le raycast part du bout du canon.)
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 100))
