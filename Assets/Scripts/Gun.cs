@@ -25,13 +25,48 @@ public class Gun : MonoBehaviour
     // Vibrations :    
     [SerializeField] private ActionBasedController rightHandController;
     [SerializeField] private ActionBasedController leftHandController;
-    private float _vibrationsIntensity = 1f;
-    private float _vibrationsDuration = 0.2f;
+    [SerializeField] private float _vibrationsIntensity = 1f;
+    [SerializeField] private float _vibrationsDuration = 0.2f;
+    public bool grabbedByLeftHand;  
+    private XRGrabInteractable _grabInteractable;
+    private XRBaseInteractor _handGrabbingGun;
 
-
-    private void Start()
+    private void OnEnable()
     {
-        _bulletsLeft = _magazineCapacity;       
+        _grabInteractable.selectEntered.AddListener(SelectEntered);
+        _grabInteractable.selectExited.AddListener(SelectExited);
+    }
+
+    private void OnDisable()
+    {
+        _grabInteractable.selectEntered.RemoveListener(SelectEntered);
+        _grabInteractable.selectExited.RemoveListener(SelectExited);
+    }
+
+    private void SelectEntered(SelectEnterEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        if (_handGrabbingGun.gameObject.name == "LeftHand Controller") grabbedByLeftHand = true;
+        Debug.Log("Selected by " + _handGrabbingGun.gameObject.name);
+    }
+
+    private void SelectExited(SelectExitEventArgs interactor)
+    {        
+        _handGrabbingGun = null;
+        grabbedByLeftHand = false;
+    }
+    // Fin des vibrations.
+
+
+
+
+    private void Awake()
+    {
+        _bulletsLeft = _magazineCapacity;
+
+        // Vibrations.
+        _grabInteractable = GetComponent<XRGrabInteractable>();
+        // Fin des vibrations.
     }
 
     private void Update()
@@ -55,14 +90,16 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-        // Shot only if the gun fire is over.
+        // Shoots only if the gun fire is over.
         if (!_isReloading && _anim.GetCurrentAnimatorStateInfo(0).IsName("Gun_Idle"))
         {
             if (_bulletsLeft > 0)
             {
-                // Vibrations :                
-                rightHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
-                leftHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+                // Vibrations :
+                if (!grabbedByLeftHand)
+                    rightHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+                else
+                    leftHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
 
 
                 _bulletsLeft--;
