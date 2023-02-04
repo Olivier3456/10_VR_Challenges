@@ -985,11 +985,15 @@ MonoBehaviour:
   _gunAudioSource: {fileID: 5305236849871195270}
   _gunShotSound: {fileID: 8300000, guid: a9910de6efc22f94b9973694f0abc525, type: 3}
   _gunEmptySound: {fileID: 8300000, guid: 842389df728a2fe4d81f18648483cab2, type: 3}
+  _gunReloadSound: {fileID: 8300000, guid: 07914d6c8380eec4d9f3677b65d801f8, type: 3}
   _endGunBarrel: {fileID: 6690285934051610673}
   _impactParticle: {fileID: 5782112380894879790}
   _gunFireParticle: {fileID: 4083310859004420751}
   _FireGunPointLight: {fileID: 1279134966126530190}
   _gunForce: 0.5
+  _camera: {fileID: 0}
+  _reloadTime: 1.5
+  _magazineCapacity: 7
 --- !u!82 &5305236849871195270
 AudioSource:
   m_ObjectHideFlags: 0

@@ -36,8 +36,8 @@ ModelImporter:
       name: Fire
       takeName: Fire
       internalID: -4579541417933013020
-      firstFrame: 121
-      lastFrame: 159
+      firstFrame: 0
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -8,19 +8,48 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioSource _gunAudioSource;
     [SerializeField] private AudioClip _gunShotSound;
     [SerializeField] private AudioClip _gunEmptySound;
+    [SerializeField] private AudioClip _gunReloadSound;
     [SerializeField] private Transform _endGunBarrel;
     [SerializeField] private ParticleSystem _impactParticle;
     [SerializeField] private ParticleSystem _gunFireParticle;
     [SerializeField] private Light _FireGunPointLight;
     [SerializeField] private float _gunForce = 1f;
-    private int _bulletsLeft = 7;
-
+    [SerializeField] private float _reloadTime = 1.5f;
+    [SerializeField] private int _magazineCapacity = 7;
+    private int _bulletsLeft;
+    private bool _isReloading;
+    private float _verticalMarginForReloading = 0.025f;
     private Vector3 impactPosition;
+
+    private void Start()
+    {
+        _bulletsLeft = _magazineCapacity;
+        Debug.Log(Vector3.up);
+    }
+
+    private void Update()
+    {
+        // Reloading when the gun points downwards.
+        if (!_gunAudioSource.isPlaying && _bulletsLeft < 7 && Vector3.Dot(-_endGunBarrel.forward, Physics.gravity.normalized) < -1 + _verticalMarginForReloading)
+        {
+            _bulletsLeft = 7;
+            _gunAudioSource.clip = _gunReloadSound;
+            _gunAudioSource.Play();
+            _isReloading = true;
+            StartCoroutine(Reloading());
+        }
+    }
+
+    IEnumerator Reloading()
+    {
+        yield return new WaitForSeconds(_reloadTime);
+        _isReloading = false;
+    }
 
     public void Fire()
     {
         // Shot only if the gun fire is over.
-        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Gun_Idle"))
+        if (!_isReloading && _anim.GetCurrentAnimatorStateInfo(0).IsName("Gun_Idle"))
         {
             if (_bulletsLeft > 0)
             {

@@ -381,7 +381,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1082332453}
-  m_Father: {fileID: 330585546}
+  m_Father: {fileID: 1584674637}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &218123166
@@ -736,10 +736,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 218123165}
+  m_Children: []
   m_Father: {fileID: 1584674637}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -2464,6 +2463,16 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayIfNotAlreadyPlayed
       objectReference: {fileID: 0}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 330585546}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: _gunReloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 07914d6c8380eec4d9f3677b65d801f8, type: 3}
     - target: {fileID: 7219783966325388720, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3240,6 +3249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 218123165}
   - {fileID: 330585546}
   - {fileID: 206555635}
   - {fileID: 241220410}
@@ -3841,7 +3851,7 @@ PrefabInstance:
     - target: {fileID: 1111747206622908662, guid: a703101b415daf2408f9ea7c279e35f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1111747206622908662, guid: a703101b415daf2408f9ea7c279e35f0,
         type: 3}
@@ -3912,6 +3922,11 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1259977029}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 330585546}
     - target: {fileID: 7219783966325388720, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3989,7 +4004,7 @@ PrefabInstance:
     - target: {fileID: 5335205289528351214, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5335205289528351214, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
         type: 3}
