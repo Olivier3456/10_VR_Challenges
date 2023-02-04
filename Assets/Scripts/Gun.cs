@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Gun : MonoBehaviour
 {
@@ -18,13 +19,19 @@ public class Gun : MonoBehaviour
     [SerializeField] private int _magazineCapacity = 7;
     private int _bulletsLeft;
     private bool _isReloading;
-    private float _verticalMarginForReloading = 0.025f;
+    private float _verticalMarginForReloading = 0.015f;
     private Vector3 impactPosition;
+
+    // Vibrations :    
+    [SerializeField] private ActionBasedController rightHandController;
+    [SerializeField] private ActionBasedController leftHandController;
+    private float _vibrationsIntensity = 1f;
+    private float _vibrationsDuration = 0.2f;
+
 
     private void Start()
     {
-        _bulletsLeft = _magazineCapacity;
-        Debug.Log(Vector3.up);
+        _bulletsLeft = _magazineCapacity;       
     }
 
     private void Update()
@@ -53,6 +60,11 @@ public class Gun : MonoBehaviour
         {
             if (_bulletsLeft > 0)
             {
+                // Vibrations :                
+                rightHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+                leftHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+
+
                 _bulletsLeft--;
                 _anim.SetTrigger("Shot");
                 _gunAudioSource.pitch = Random.Range(0.9f, 1.1f);

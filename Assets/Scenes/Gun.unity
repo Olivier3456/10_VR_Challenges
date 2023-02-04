@@ -348,6 +348,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5335205289598685213}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &206555639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5335205289528351210, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
+    type: 3}
+  m_PrefabInstance: {fileID: 5335205289598685213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218123164
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +518,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1111747206788557772}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &241220414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1111747206622908658, guid: a703101b415daf2408f9ea7c279e35f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1111747206788557772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &253291036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2470,9 +2494,24 @@ PrefabInstance:
       objectReference: {fileID: 330585546}
     - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
+      propertyPath: hapticTest
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
       propertyPath: _gunReloadSound
       value: 
       objectReference: {fileID: 8300000, guid: 07914d6c8380eec4d9f3677b65d801f8, type: 3}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: leftHandController
+      value: 
+      objectReference: {fileID: 206555639}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: rightHandController
+      value: 
+      objectReference: {fileID: 241220414}
     - target: {fileID: 7219783966325388720, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3927,6 +3966,21 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: hapticTest
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: leftHandController
+      value: 
+      objectReference: {fileID: 206555639}
+    - target: {fileID: 5305236849871195269, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: rightHandController
+      value: 
+      objectReference: {fileID: 241220414}
     - target: {fileID: 7219783966325388720, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -4001,6 +4055,16 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 944355076}
+    - target: {fileID: 5335205289528351205, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
+        type: 3}
+      propertyPath: m_PlayHapticsOnSelectExited
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335205289528351205, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
+        type: 3}
+      propertyPath: m_PlayHapticsOnSelectEntered
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5335205289528351214, guid: 19edd294ea3fa5447bd6b2e4f79ab115,
         type: 3}
       propertyPath: m_RootOrder
