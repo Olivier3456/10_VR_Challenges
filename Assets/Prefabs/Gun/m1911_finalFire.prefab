@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6187502416879109490}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7616476321214563893}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 3979309386863862960}
   - component: {fileID: 3979309386863862959}
   - component: {fileID: 537460766}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Laser_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 5561145299981735151}
   - component: {fileID: 8782884364672735893}
   - component: {fileID: 6075066137535297627}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Laser_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,8 +266,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7441222764762133349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 60.59, z: 9.17}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalPosition: {x: -0.32, y: 63.3, z: 9.17}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7696363982940772550}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8586529798116915631}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_gripsafety
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5170275734347576327}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1901430947590684573}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_CORE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5432495099039026214}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Laser_origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,8 +737,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+        m_TargetAssemblyTypeName: Music, Assembly-CSharp
+        m_MethodName: PlayIfNotAlreadyPlayed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1067,7 +1067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4286802856461922538}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: joint_hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1190,7 +1190,7 @@ PrefabInstance:
     - target: {fileID: 4682246741601952410, guid: c6c79adb34be2694d8d6020785e7e790,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5454279394339747872, guid: c6c79adb34be2694d8d6020785e7e790,
         type: 3}

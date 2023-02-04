@@ -11,7 +11,7 @@ public class Laser_button : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hands") && _timer)
+        if (_timer)
         {
             _timer = false;
             LaserIsActive = !LaserIsActive;
