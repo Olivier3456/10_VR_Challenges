@@ -22,12 +22,12 @@ public class Gun : MonoBehaviour
     private float _verticalMarginForReloading = 0.015f;
     private Vector3 impactPosition;
 
-    // Vibrations :    
+    #region Vibrations
     [SerializeField] private ActionBasedController rightHandController;
     [SerializeField] private ActionBasedController leftHandController;
     [SerializeField] private float _vibrationsIntensity = 1f;
     [SerializeField] private float _vibrationsDuration = 0.2f;
-    public bool grabbedByLeftHand;  
+    private bool grabbedByLeftHand;  
     private XRGrabInteractable _grabInteractable;
     private XRBaseInteractor _handGrabbingGun;
 
@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
         _handGrabbingGun = null;
         grabbedByLeftHand = false;
     }
-    // Fin des vibrations.
+    #endregion
 
 
 
@@ -64,9 +64,9 @@ public class Gun : MonoBehaviour
     {
         _bulletsLeft = _magazineCapacity;
 
-        // Vibrations.
+        #region Vibrations
         _grabInteractable = GetComponent<XRGrabInteractable>();
-        // Fin des vibrations.
+        #endregion
     }
 
     private void Update()
@@ -95,11 +95,12 @@ public class Gun : MonoBehaviour
         {
             if (_bulletsLeft > 0)
             {
-                // Vibrations :
+                #region Vibrations
                 if (!grabbedByLeftHand)
                     rightHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
                 else
                     leftHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+                #endregion
 
 
                 _bulletsLeft--;
@@ -131,7 +132,7 @@ public class Gun : MonoBehaviour
 
 
 
-                    if (hit.transform.gameObject.CompareTag("Canette"))
+                    if (hit.transform.gameObject.CompareTag("Canette"))           // Si l'objet touché est une cible...
                     {
                         hit.transform.gameObject.GetComponent<Rigidbody>().AddForce(-hit.normal * _gunForce, ForceMode.Impulse);
 
