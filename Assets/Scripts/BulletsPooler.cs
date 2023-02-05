@@ -5,8 +5,7 @@ using UnityEngine;
 public class BulletsPooler : MonoBehaviour
 {
     [SerializeField] private int _totalNumberOfBullets = 5;
-    [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private float _ejectionForce = 0.2f;
+    [SerializeField] private GameObject _bulletPrefab;    
     private Queue<GameObject> _disabledBullets = new Queue<GameObject>();
     private Queue<GameObject> _enabledBullets = new Queue<GameObject>();
     
@@ -40,8 +39,7 @@ public class BulletsPooler : MonoBehaviour
         GameObject newBullet = _disabledBullets.Dequeue();
         newBullet.transform.position = ejectionPoint.position;
         newBullet.transform.rotation = ejectionPoint.rotation;
-        newBullet.SetActive(true);
-        newBullet.GetComponent<Rigidbody>().AddForce(-newBullet.transform.forward * _ejectionForce, ForceMode.Impulse);
+        newBullet.SetActive(true);        
         _enabledBullets.Enqueue(newBullet);      
     }
 }
