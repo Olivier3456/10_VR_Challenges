@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// This class needs a GameObject with a BulletsPooler class.
+
 public class Gun : MonoBehaviour
 {
     [SerializeField] private Animator _anim;
@@ -11,6 +13,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip _gunEmptySound;
     [SerializeField] private AudioClip _gunReloadSound;
     [SerializeField] private Transform _endGunBarrel;
+    [SerializeField] private Transform _bulletsEjectionPoint;
+    [SerializeField] private BulletsPooler _bulletsPooler;
     [SerializeField] private ParticleSystem _impactParticle;
     [SerializeField] private ParticleSystem _gunFireParticle;
     [SerializeField] private Light _FireGunPointLight;
@@ -56,8 +60,6 @@ public class Gun : MonoBehaviour
         grabbedByLeftHand = false;
     }
     #endregion
-
-
 
 
     private void Awake()
@@ -116,6 +118,7 @@ public class Gun : MonoBehaviour
                 _gunFireParticle.transform.position = _endGunBarrel.position;
                 _gunFireParticle.transform.forward = _endGunBarrel.forward;
                 _gunFireParticle.Play();
+                _bulletsPooler.GiveMeABullet(_bulletsEjectionPoint);
 
 
 
