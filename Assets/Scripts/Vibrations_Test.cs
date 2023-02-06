@@ -12,8 +12,8 @@ public class Vibrations_Test : MonoBehaviour
 {
     [SerializeField] private ActionBasedController rightHandController;
     [SerializeField] private ActionBasedController leftHandController;
-    [Space(10)]
-    [SerializeField] private float _vibrationsIntensity = 1f;
+    [Space(10)]   
+    [SerializeField][Range(0, 1)] private float _vibrationsIntensity = 1f;
     [SerializeField] private float _vibrationsDuration = 0.2f;
 
     private bool grabbedByLeftHand;

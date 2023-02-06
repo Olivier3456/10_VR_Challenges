@@ -28,7 +28,7 @@ public class RotateAround : MonoBehaviour
         wheelPerimeter = wheelRadius * 2 * 3.14159f;
         Debug.Log("Wheel radius: " + wheelRadius + "; wheel perimeter: " + wheelPerimeter);
 
-        // distanceHandAxe = Vector3.Distance(rightHand.transform.position, transform.position);        
+        // distanceHandAxe = Vector3.Distance(rightHand.transform.position, transform.position);
     }
 
 
@@ -54,8 +54,9 @@ public class RotateAround : MonoBehaviour
         if (isRightHand)
         {
             rightHandNewPosition = rightHand.transform.position;
-         //   float turnForce = rightHandLastPosition.x - rightHandNewPosition.x;
+            //   float turnForce = rightHandLastPosition.x - rightHandNewPosition.x;
 
+            // La roue va tourner autour de son propre axe :
             transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition)
                 * wheelPerimeter * speed * Time.deltaTime);
 
@@ -82,20 +83,30 @@ public class RotateAround : MonoBehaviour
     private float TurnForce(Vector3 newPositionOfHand, Vector3 lastPositionOfHand)
     {
         // Position de la main par rapport au centre de la roue :
-      //  Vector3 handPosition = newPositionOfHand - transform.position;
-
         float handPositionX = newPositionOfHand.x - transform.position.x;
         float handPositionY = newPositionOfHand.y - transform.position.y;
-        if (handPositionX < 0) { handPositionX = - handPositionX; } // On ne veut pas de valeurs négatifs, juste une distance.
-        if (handPositionY < 0) { handPositionX = -handPositionX; }  // Pour que le mouvement s'inverse si on tourne la roue dans sa moitié basse.
+
+        float positiveHandPositionX;
+        if (handPositionX < 0) { positiveHandPositionX = -handPositionX; }      // Pour que le mouvement ne s'inverse pas quand la main passe à gauche du centre de la roue
+        else positiveHandPositionX = handPositionX;                             // (mais on doit sauvegarder le signe de la variable pour le calcul suivant)
+        
+        float positiveHandPositionY;
+        if (handPositionY < 0) { positiveHandPositionY = -handPositionY; }      // Pour que le mouvement ne s'inverse pas quand la main passe en-dessous du centre de la roue
+        else positiveHandPositionY = handPositionY;
+
+        if (handPositionY < 0) { positiveHandPositionX = -positiveHandPositionX; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié basse.       
+        if (handPositionX < 0) { positiveHandPositionY = -positiveHandPositionY; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié gauche.
+
+        float xFactor = positiveHandPositionX / wheelPerimeter;        // Etape finale de ce calcul, pour que nos variables dépendent de la taille de la roue.
+        float yFactor = positiveHandPositionY / wheelPerimeter;
 
 
-
-        float handMovementX = lastPositionOfHand.x - newPositionOfHand.x;
+        float handMovementX = lastPositionOfHand.x - newPositionOfHand.x;   // Distance parcourue par la main depuis la dernière image.
         float handMovementY = lastPositionOfHand.y - newPositionOfHand.y;
-        float handMovementZ = lastPositionOfHand.z - newPositionOfHand.z;
+        
+        
 
-        float turnForce = handMovementX / handPositionX;
+        float turnForce = handMovementX / xFactor - handMovementY / yFactor;
 
         return turnForce;
     }
