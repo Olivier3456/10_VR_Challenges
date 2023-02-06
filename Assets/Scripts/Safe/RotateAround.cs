@@ -17,7 +17,7 @@ public class RotateAround : MonoBehaviour
     private bool isRightHand;
     private bool isLeftHand;
 
-    [SerializeField] private float speed = 5000;
+    [SerializeField] private float speed = 51000;
 
     private float wheelRadius;
     private float wheelPerimeter;
@@ -57,8 +57,7 @@ public class RotateAround : MonoBehaviour
             //   float turnForce = rightHandLastPosition.x - rightHandNewPosition.x;
 
             // La roue va tourner autour de son propre axe :
-            transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition)
-                * wheelPerimeter * speed * Time.deltaTime);
+            transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition) * speed * Time.deltaTime);
 
             rightHandLastPosition = rightHandNewPosition;
         }
@@ -86,13 +85,11 @@ public class RotateAround : MonoBehaviour
         float handPositionX = newPositionOfHand.x - transform.position.x;
         float handPositionY = newPositionOfHand.y - transform.position.y;
 
-        float positiveHandPositionX;
-        if (handPositionX < 0) { positiveHandPositionX = -handPositionX; }      // Pour que le mouvement ne s'inverse pas quand la main passe à gauche du centre de la roue
-        else positiveHandPositionX = handPositionX;                             // (mais on doit sauvegarder le signe de la variable pour le calcul suivant)
-        
-        float positiveHandPositionY;
-        if (handPositionY < 0) { positiveHandPositionY = -handPositionY; }      // Pour que le mouvement ne s'inverse pas quand la main passe en-dessous du centre de la roue
-        else positiveHandPositionY = handPositionY;
+        float positiveHandPositionX = Mathf.Abs(handPositionX);   // Pour que le mouvement ne s'inverse pas quand la main passe à gauche du centre de la roue
+                                                                  // (mais on doit conserver le signe de la variable pour le calcul suivant).
+
+        float positiveHandPositionY = Mathf.Abs(handPositionY);   // Pour que le mouvement ne s'inverse pas quand la main passe en-dessous du centre de la roue.
+
 
         if (handPositionY < 0) { positiveHandPositionX = -positiveHandPositionX; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié basse.       
         if (handPositionX < 0) { positiveHandPositionY = -positiveHandPositionY; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié gauche.
@@ -103,10 +100,19 @@ public class RotateAround : MonoBehaviour
 
         float handMovementX = lastPositionOfHand.x - newPositionOfHand.x;   // Distance parcourue par la main depuis la dernière image.
         float handMovementY = lastPositionOfHand.y - newPositionOfHand.y;
-        
-        
 
-        float turnForce = handMovementX / xFactor - handMovementY / yFactor;
+        Debug.Log("xFactor : " + xFactor);
+        Debug.Log("yFactor : " + yFactor);
+
+
+        float turnForce;
+
+        turnForce = handMovementX * yFactor - handMovementY * xFactor;
+
+
+
+
+
 
         return turnForce;
     }

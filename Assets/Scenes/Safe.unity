@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 1111747206788557773}
   leftHand: {fileID: 1986998659}
-  speed: 500
+  speed: 51000
 --- !u!54 &1005186431
 Rigidbody:
   m_ObjectHideFlags: 0
