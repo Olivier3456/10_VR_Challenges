@@ -38,14 +38,12 @@ public class Wheel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == rightHand.name && isLeftHand == false)
-        {
-            Debug.Log("isRightHand - Addforce wheel");
+        {            
             isRightHand = true;
             rightHandLastPosition = rightHand.transform.position;
         }
         else if (other.gameObject.name == leftHand.name && isRightHand == false)
-        {
-            Debug.Log("isLeftHand - Addforce wheel");
+        {            
             isLeftHand = true;
             leftHandLastPosition = leftHand.transform.position;
         }
