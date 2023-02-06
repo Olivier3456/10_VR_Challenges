@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
-// Attach this script to the object that send vibrations to the hand which grabbed it.
+// Attach this script to the object that sends vibrations to the hand which grabbed it.
 
 
 public class Vibrations_Test : MonoBehaviour
@@ -19,20 +19,54 @@ public class Vibrations_Test : MonoBehaviour
     private bool grabbedByLeftHand;
     
     private XRBaseInteractor _handGrabbingGun;
-    
-    public void SelectEntered(SelectEnterEventArgs interactor)  // Methode to call when the object is grabbed (selected).
-    {
-        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;        
-    }
 
-    public void SendHapticImpulse()     // Send vibrations to the hand which grabbed it.
+
+    // This method allows us to know which hand has grabbed the object.
+    // There is an overload for each kind of possible event:
+    #region
+    public void SendHapticImpulse(HoverEnterEventArgs interactor)
     {
-        if (_handGrabbingGun != null && _handGrabbingGun.gameObject.name == "LeftHand Controller") grabbedByLeftHand = true;
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    public void SendHapticImpulse(HoverExitEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    public void SendHapticImpulse(SelectEnterEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    public void SendHapticImpulse(SelectExitEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    public void SendHapticImpulse(ActivateEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    public void SendHapticImpulse(DeactivateEventArgs interactor)
+    {
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+    }
+    #endregion
+
+       
+
+    // Send vibrations to the hand which grabbed it. (Can of course be called by another class.)
+    public void SendHapticImpulse(float intensity, float duration)
+    {
+        if (_handGrabbingGun != null && _handGrabbingGun.gameObject.name == leftHandController.gameObject.name) grabbedByLeftHand = true;
         else grabbedByLeftHand = false;
 
         if (!grabbedByLeftHand)
-            rightHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+            rightHandController.SendHapticImpulse(intensity, duration);
         else
-            leftHandController.SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
+            leftHandController.SendHapticImpulse(intensity, duration);
     }
 }
