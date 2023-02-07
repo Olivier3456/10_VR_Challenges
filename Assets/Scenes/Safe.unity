@@ -2915,6 +2915,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3274758576510326947, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: m_Name
+      value: Last Rotation State
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080867737744608791, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: m_Name
+      value: Actual Rotation State
+      objectReference: {fileID: 0}
     - target: {fileID: 8749113177837980785, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
         type: 3}
       propertyPath: m_Name
@@ -2985,5 +2995,10 @@ PrefabInstance:
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 1111747206788557773}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: _angleBetweenClicks
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec917560510a7bb4fb1c941a6cdbbe9d, type: 3}

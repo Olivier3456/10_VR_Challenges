@@ -13,7 +13,7 @@ public class RotateAround : MonoBehaviour
 
     private Vector3 leftHandLastPosition;
     private Vector3 leftHandNewPosition;
-       
+
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
     private int leftHandInColliders = 0;
 
@@ -22,7 +22,10 @@ public class RotateAround : MonoBehaviour
     private float wheelRadius;
     private float wheelPerimeter;
 
-    [SerializeField] private WheelSecondCollider secondCollider;
+    private AudioSource _wheelAudioSource;
+    private Vector3 lastRotationClick;
+    [SerializeField] private float _angleBetweenClicks = 5;
+
 
     private void Start()
     {
@@ -30,17 +33,20 @@ public class RotateAround : MonoBehaviour
         wheelPerimeter = wheelRadius * 2 * 3.14159f;
         Debug.Log("Wheel radius: " + wheelRadius + "; wheel perimeter: " + wheelPerimeter);
 
+        _wheelAudioSource = GetComponent<AudioSource>();
+        lastRotationClick = transform.forward;
+        _angleBetweenClicks /= 90;
+
         // distanceHandAxe = Vector3.Distance(rightHand.transform.position, transform.position);
-
-
     }
-       
+
+
 
     private void OnTriggerEnter(Collider other)     // Méthode appelée chaque fois que quelque chose entre dans un des deux colliders.
     {
         if (other.name == rightHand.name)
         {
-            rightHandInColliders++;           
+            rightHandInColliders++;
             if (rightHandInColliders == 2)
                 rightHandLastPosition = rightHand.transform.position;
         }
@@ -57,6 +63,14 @@ public class RotateAround : MonoBehaviour
             transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition) * speed * Time.deltaTime);
 
             rightHandLastPosition = rightHandNewPosition;
+
+            
+            if (Vector3.Dot(transform.forward, lastRotationClick.normalized) < 1 - _angleBetweenClicks)
+            {
+                _wheelAudioSource.Play();
+                lastRotationClick = transform.forward;
+                Debug.Log("Vector3.Dot(transform.forward, lastRotationClick.normalized) = " + Vector3.Dot(transform.forward, lastRotationClick.normalized));
+            }
         }
 
         //else if (leftHandInColliders == 2)
@@ -68,6 +82,8 @@ public class RotateAround : MonoBehaviour
 
         //    leftHandLastPosition = leftHandNewPosition;
         //}
+
+
     }
 
 
