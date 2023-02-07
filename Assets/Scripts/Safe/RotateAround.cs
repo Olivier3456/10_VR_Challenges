@@ -94,24 +94,18 @@ public class RotateAround : MonoBehaviour
         if (handPositionY < 0) { positiveHandPositionX = -positiveHandPositionX; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié basse.       
         if (handPositionX < 0) { positiveHandPositionY = -positiveHandPositionY; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié gauche.
 
-        float xFactor = positiveHandPositionX / wheelPerimeter;        // Etape finale de ce calcul, pour que nos variables dépendent de la taille de la roue.
+        float xFactor = positiveHandPositionX / wheelPerimeter;        // Pour que nos variables dépendent de la taille de la roue.
         float yFactor = positiveHandPositionY / wheelPerimeter;
 
 
         float handMovementX = lastPositionOfHand.x - newPositionOfHand.x;   // Distance parcourue par la main depuis la dernière image.
         float handMovementY = lastPositionOfHand.y - newPositionOfHand.y;
-
-        Debug.Log("xFactor : " + xFactor);
-        Debug.Log("yFactor : " + yFactor);
-
+            
 
         float turnForce;
-
-        turnForce = handMovementX * yFactor - handMovementY * xFactor;
-
-
-
-
+        if (xFactor < 0 && yFactor > 0) { turnForce = -(handMovementX * yFactor - handMovementY * xFactor); }
+        else if (xFactor > 0 && yFactor < 0) { turnForce = -(handMovementX * yFactor - handMovementY * xFactor); }
+        else turnForce = handMovementX * yFactor - handMovementY * xFactor;
 
 
         return turnForce;

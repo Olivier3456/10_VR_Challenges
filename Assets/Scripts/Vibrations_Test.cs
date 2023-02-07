@@ -31,7 +31,7 @@ public class Vibrations_Test : MonoBehaviour
     }
     public void SendHapticImpulse(HoverExitEventArgs interactor)
     {
-        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;
+        _handGrabbingGun = interactor.interactorObject as XRBaseInteractor;        
         SendHapticImpulse(_vibrationsIntensity, _vibrationsDuration);
     }
     public void SendHapticImpulse(SelectEnterEventArgs interactor)
