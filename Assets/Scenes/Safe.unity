@@ -2998,7 +2998,7 @@ PrefabInstance:
     - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
         type: 3}
       propertyPath: _angleBetweenClicks
-      value: 90
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec917560510a7bb4fb1c941a6cdbbe9d, type: 3}

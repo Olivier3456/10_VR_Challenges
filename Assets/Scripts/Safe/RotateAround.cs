@@ -23,7 +23,8 @@ public class RotateAround : MonoBehaviour
     private float wheelPerimeter;
 
     private AudioSource _wheelAudioSource;
-    private Vector3 lastRotationClick;
+    private Vector3 lastRotationClick;    
+    private bool alreadyClickedOnReturn;
     [SerializeField] private float _angleBetweenClicks = 5;
 
 
@@ -63,15 +64,9 @@ public class RotateAround : MonoBehaviour
             transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition) * speed * Time.deltaTime);
 
             rightHandLastPosition = rightHandNewPosition;
-
-            
-            if (Vector3.Dot(transform.forward, lastRotationClick.normalized) < 1 - _angleBetweenClicks)
-            {
-                _wheelAudioSource.Play();
-                lastRotationClick = transform.forward;
-                Debug.Log("Vector3.Dot(transform.forward, lastRotationClick.normalized) = " + Vector3.Dot(transform.forward, lastRotationClick.normalized));
-            }
+            CheckForClick();
         }
+
 
         //else if (leftHandInColliders == 2)
         //{
@@ -82,8 +77,23 @@ public class RotateAround : MonoBehaviour
 
         //    leftHandLastPosition = leftHandNewPosition;
         //}
+    }
 
+    private void CheckForClick()
+    {
+        float angleFromLastClick = Vector3.Dot(transform.forward, lastRotationClick.normalized);
+        if (angleFromLastClick < 1 - _angleBetweenClicks)       // Quand la roue arrive au prochain click :
+        {
+            _wheelAudioSource.Play();
+            lastRotationClick = transform.forward;
+        }
 
+        if (angleFromLastClick > 0.999f && !alreadyClickedOnReturn) // Quand la roue repasse dans la zone de son dernier click et n'a pas déjà cliqué lors de ce retour.
+        {
+            _wheelAudioSource.Play();
+            alreadyClickedOnReturn = true;
+        }
+        else if (angleFromLastClick <= 0.999f) alreadyClickedOnReturn = false;       // Si elle sort de la zone du dernier click, elle pourra recliquer dedans.
     }
 
 
@@ -92,7 +102,6 @@ public class RotateAround : MonoBehaviour
         if (other.name == rightHand.name)
         {
             rightHandInColliders--;
-            Debug.Log("rightHandInColliders: " + rightHandInColliders);
         }
     }
 
