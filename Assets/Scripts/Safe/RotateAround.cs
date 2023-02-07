@@ -13,14 +13,16 @@ public class RotateAround : MonoBehaviour
 
     private Vector3 leftHandLastPosition;
     private Vector3 leftHandNewPosition;
-
-    private bool isRightHand;
-    private bool isLeftHand;
+       
+    private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
+    private int leftHandInColliders = 0;
 
     [SerializeField] private float speed = 50000;
 
     private float wheelRadius;
     private float wheelPerimeter;
+
+    [SerializeField] private WheelSecondCollider secondCollider;
 
     private void Start()
     {
@@ -29,53 +31,53 @@ public class RotateAround : MonoBehaviour
         Debug.Log("Wheel radius: " + wheelRadius + "; wheel perimeter: " + wheelPerimeter);
 
         // distanceHandAxe = Vector3.Distance(rightHand.transform.position, transform.position);
+
+
     }
+       
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)     // Méthode appelée chaque fois que quelque chose entre dans un des deux colliders.
     {
-        if (other.name == rightHand.name && isLeftHand == false)
+        if (other.name == rightHand.name)
         {
-            isRightHand = true;
-            rightHandLastPosition = rightHand.transform.position;
-        }
-        else if (other.name == leftHand.name && isRightHand == false)
-        {
-            isLeftHand = true;
-            leftHandLastPosition = leftHand.transform.position;
+            rightHandInColliders++;           
+            if (rightHandInColliders == 2)
+                rightHandLastPosition = rightHand.transform.position;
         }
     }
-
 
 
     private void OnTriggerStay(Collider other)
     {
-        if (isRightHand)
+        if (rightHandInColliders == 2)
         {
             rightHandNewPosition = rightHand.transform.position;
-            //   float turnForce = rightHandLastPosition.x - rightHandNewPosition.x;
 
             // La roue va tourner autour de son propre axe :
             transform.RotateAround(transform.position, Vector3.forward, TurnForce(rightHandNewPosition, rightHandLastPosition) * speed * Time.deltaTime);
 
             rightHandLastPosition = rightHandNewPosition;
         }
-        //else if (isLeftHand)
+
+        //else if (leftHandInColliders == 2)
         //{
         //    leftHandNewPosition = leftHand.transform.position;
         //    float turnForce = leftHandLastPosition.x - leftHandNewPosition.x;
 
-        //    transform.RotateAround(transform.position, Vector3.forward, turnForce * wheelPerimeter * speed * Time.deltaTime);
+        //    transform.RotateAround(transform.position, Vector3.forward, TurnForce(leftHandNewPosition,leftHandLastPosition) * speed * Time.deltaTime);
 
         //    leftHandLastPosition = leftHandNewPosition;
         //}
     }
 
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == rightHand.name) isRightHand = false;
-        else if (other.gameObject.name == leftHand.name) isLeftHand = false;
+        if (other.name == rightHand.name)
+        {
+            rightHandInColliders--;
+            Debug.Log("rightHandInColliders: " + rightHandInColliders);
+        }
     }
 
 
@@ -89,7 +91,6 @@ public class RotateAround : MonoBehaviour
                                                                   // (mais on doit conserver le signe de la variable pour le calcul suivant).
 
         float positiveHandPositionY = Mathf.Abs(handPositionY);   // Pour que le mouvement ne s'inverse pas quand la main passe en-dessous du centre de la roue.
-
 
         if (handPositionY < 0) { positiveHandPositionX = -positiveHandPositionX; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié basse.       
         if (handPositionX < 0) { positiveHandPositionY = -positiveHandPositionY; }  // Pour que le mouvement s'inverse quand on tourne la roue dans sa moitié gauche.
