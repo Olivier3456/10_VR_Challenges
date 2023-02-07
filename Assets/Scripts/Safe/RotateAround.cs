@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RotateAround : MonoBehaviour
 {
+    [SerializeField] private InputActionReference _gripWithRightHand;       // Grip action réglée en Press > Press Only.
+    [SerializeField] private InputActionReference _unGripWithRightHand;     // Grip action sur la même gâchette, réglée en Press > Release Only.
+    private bool _isGrippedByRightHand;
+    
+
     [SerializeField] private GameObject rightHand;
     [SerializeField] private GameObject leftHand;
 
@@ -34,12 +40,32 @@ public class RotateAround : MonoBehaviour
         wheelPerimeter = wheelRadius * 2 * 3.14159f;
         Debug.Log("Wheel radius: " + wheelRadius + "; wheel perimeter: " + wheelPerimeter);
 
+
         _wheelAudioSource = GetComponent<AudioSource>();
         lastRotationClick = transform.forward;
         _angleBetweenClicks /= 90;
 
+
+        _gripWithRightHand.action.Enable();
+        _gripWithRightHand.action.performed += GripTheWheel;
+        _unGripWithRightHand.action.Enable();
+        _unGripWithRightHand.action.performed += UnGripTheWheel;
+
+
         // distanceHandAxe = Vector3.Distance(rightHand.transform.position, transform.position);
     }
+
+
+    private void GripTheWheel(InputAction.CallbackContext obj)
+    {
+        _isGrippedByRightHand = true;
+        rightHandLastPosition = rightHand.transform.position;
+    }
+    private void UnGripTheWheel(InputAction.CallbackContext obj)
+    {
+        _isGrippedByRightHand = false;
+    }
+
 
 
 
@@ -56,7 +82,7 @@ public class RotateAround : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (rightHandInColliders == 2)
+        if (rightHandInColliders == 2 && _isGrippedByRightHand)
         {
             rightHandNewPosition = rightHand.transform.position;
 

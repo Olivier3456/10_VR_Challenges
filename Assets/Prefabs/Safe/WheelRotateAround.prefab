@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8749113177837980790}
   - component: {fileID: 8749113177837980791}
   - component: {fileID: 8491893967370424709}
+  - component: {fileID: 1005186432}
   m_Layer: 0
   m_Name: WheelRotateAround
   m_TagString: Untagged
@@ -197,6 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e766f94eb11b84d91714c789326c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gripWithRightHand: {fileID: -8662638861869859437, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  _unGripWithRightHand: {fileID: 4570335552044063572, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
   rightHand: {fileID: 0}
   leftHand: {fileID: 0}
   speed: 50000
@@ -313,3 +318,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1005186432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749113177837980785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2.0000002, z: 1.0000004}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940698}

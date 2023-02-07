@@ -2987,6 +2987,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
         type: 3}
+      propertyPath: _grip
+      value: 
+      objectReference: {fileID: -8662638861869859437, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 1986998659}
@@ -2997,8 +3003,32 @@ PrefabInstance:
       objectReference: {fileID: 1111747206788557773}
     - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
         type: 3}
+      propertyPath: _gripRight
+      value: 
+      objectReference: {fileID: -8662638861869859437, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: _unGripRight
+      value: 
+      objectReference: {fileID: 4570335552044063572, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: _gripWithRightHand
+      value: 
+      objectReference: {fileID: -8662638861869859437, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
       propertyPath: _angleBetweenClicks
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8749113177837980790, guid: ec917560510a7bb4fb1c941a6cdbbe9d,
+        type: 3}
+      propertyPath: _unGripWithRightHand
+      value: 
+      objectReference: {fileID: 4570335552044063572, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec917560510a7bb4fb1c941a6cdbbe9d, type: 3}
