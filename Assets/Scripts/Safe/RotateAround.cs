@@ -17,7 +17,7 @@ public class RotateAround : MonoBehaviour
     private bool isRightHand;
     private bool isLeftHand;
 
-    [SerializeField] private float speed = 51000;
+    [SerializeField] private float speed = 50000;
 
     private float wheelRadius;
     private float wheelPerimeter;
@@ -100,15 +100,12 @@ public class RotateAround : MonoBehaviour
 
         float handMovementX = lastPositionOfHand.x - newPositionOfHand.x;   // Distance parcourue par la main depuis la dernière image.
         float handMovementY = lastPositionOfHand.y - newPositionOfHand.y;
-            
+
 
         float turnForce;
-        if (xFactor < 0 && yFactor > 0) { turnForce = -(handMovementX * yFactor - handMovementY * xFactor); }
-        else if (xFactor > 0 && yFactor < 0) { turnForce = -(handMovementX * yFactor - handMovementY * xFactor); }
+        if (xFactor < 0 && yFactor > 0 || xFactor > 0 && yFactor < 0) turnForce = -(handMovementX * yFactor - handMovementY * xFactor);
         else turnForce = handMovementX * yFactor - handMovementY * xFactor;
-
 
         return turnForce;
     }
-
 }
