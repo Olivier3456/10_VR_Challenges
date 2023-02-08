@@ -1846,6 +1846,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5628795841321722444, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: leftHandController
+      value: 
+      objectReference: {fileID: 206555639}
+    - target: {fileID: 5628795841321722444, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: _vibrationsDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628795841321722444, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: rightHandController
+      value: 
+      objectReference: {fileID: 241220414}
+    - target: {fileID: 5628795841321722444, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: _vibrationsIntensity
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7134505015950210329, guid: 1f88b28f19b04e042bf5060e9c2e3583,
         type: 3}
       propertyPath: leftHand

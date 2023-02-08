@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class RotateAroundProjection : MonoBehaviour
@@ -14,6 +15,8 @@ public class RotateAroundProjection : MonoBehaviour
 
     [SerializeField] private GameObject rightHand;
     [SerializeField] private GameObject leftHand;
+    private ActionBasedController rightHandController;      // Sert pour envoyer les vibrations aux manettes quand la roue tourne.
+    private ActionBasedController leftHandController;
 
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
 
@@ -32,11 +35,17 @@ public class RotateAroundProjection : MonoBehaviour
 
     private Vector3 rightHandLastPosition;
 
+    private WheelVibrations vibrations;
+
     private void Start()
     {
         _wheelAudioSource = GetComponent<AudioSource>();
         lastRotationClick = transform.forward;
         _angleBetweenClicks /= 90;
+
+        vibrations = GetComponent<WheelVibrations>();
+        rightHandController = rightHand.GetComponent<ActionBasedController>();
+        leftHandController = leftHand.GetComponent<ActionBasedController>();
 
         EnableInputActions();
     }
@@ -55,7 +64,6 @@ public class RotateAroundProjection : MonoBehaviour
         pointToProject = rightHand.transform.position;
         planePoint = transform.position;
         handProjection = pointToProject - (Vector3.Dot(wheelNormal, pointToProject - planePoint) / Vector3.Dot(wheelNormal, wheelNormal)) * wheelNormal;
-
     }
 
     private void GripTheWheel(InputAction.CallbackContext obj)
@@ -113,12 +121,14 @@ public class RotateAroundProjection : MonoBehaviour
         if (angleFromLastClick < 1 - _angleBetweenClicks)       // Quand la roue arrive au prochain click :
         {
             _wheelAudioSource.Play();
+            vibrations.SendHapticImpulseToHand(rightHandController);
             lastRotationClick = transform.forward;
         }
 
         if (angleFromLastClick > 0.999f && !alreadyClickedOnReturn) // Quand la roue repasse dans la zone de son dernier click et n'a pas déjà cliqué lors de ce retour.
         {
             _wheelAudioSource.Play();
+            vibrations.SendHapticImpulseToHand(rightHandController);
             alreadyClickedOnReturn = true;
         }
         else if (angleFromLastClick <= 0.999f) alreadyClickedOnReturn = false;       // Si elle sort de la zone du dernier click, elle pourra y recliquer.

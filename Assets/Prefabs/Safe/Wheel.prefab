@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 7134505015950210328}
   - component: {fileID: 1647083886657145117}
   - component: {fileID: 7134505015950210329}
+  - component: {fileID: 5628795841321722444}
   m_Layer: 0
   m_Name: WheelRotateAround
   m_TagString: Untagged
@@ -364,6 +365,22 @@ MonoBehaviour:
   _angleBetweenClicks: 5
   parentObject: {fileID: 8048079894305917112}
   pivot: {fileID: 3251499414740311145}
+--- !u!114 &5628795841321722444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048079893770610924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694863be2efa66b4c88f4b242c48da09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandController: {fileID: 0}
+  leftHandController: {fileID: 0}
+  _vibrationsIntensity: 0.1
+  _vibrationsDuration: 0.1
 --- !u!1 &8048079894305917112
 GameObject:
   m_ObjectHideFlags: 0
