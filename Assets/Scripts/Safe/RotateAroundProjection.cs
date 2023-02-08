@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
-public class RotateAround : MonoBehaviour
+public class RotateAroundProjection : MonoBehaviour
 {
     [SerializeField] private InputActionReference _gripWithRightHand;       // Grip action réglée en Press > Press Only.
     [SerializeField] private InputActionReference _unGripWithRightHand;     // Grip action sur la même gâchette, réglée en Press > Release Only.
@@ -34,6 +34,31 @@ public class RotateAround : MonoBehaviour
     private bool alreadyClickedOnReturn;
     [SerializeField] private float _angleBetweenClicks = 5;
 
+
+
+    [SerializeField] private GameObject ObjectToProjectJustForTest;
+    [SerializeField] private GameObject parentObject;
+    private Vector3 pointToProject;
+    private Vector3 wheelNormal;
+    private Vector3 planePoint;
+
+
+
+
+
+    void Update()
+    {        
+        ProjectHandPositionToWheelPlan();
+    }
+
+    private void ProjectHandPositionToWheelPlan()
+    {
+        wheelNormal = parentObject.transform.forward;
+        pointToProject = rightHand.transform.position;
+        planePoint = transform.position;
+        Vector3 projection = pointToProject - (Vector3.Dot(wheelNormal, pointToProject - planePoint) / Vector3.Dot(wheelNormal, wheelNormal)) * wheelNormal;
+        ObjectToProjectJustForTest.transform.position = projection;
+    }
 
     private void Start()
     {
