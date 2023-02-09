@@ -25,7 +25,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     {
         resizeRightAction.action.Enable();
         resizeRightAction.action.performed += Resize;
-        originalScale = transform.localScale;
+     //   originalScale = transform.localScale;
     }
 
 
@@ -58,10 +58,11 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     }
 
 
-    public void Resize(InputAction.CallbackContext context)
+    public void Resize(InputAction.CallbackContext context)     // Ne pas oublier de mettre l'action en Press and Release.
     {
         originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
-        isRescaling = true;
+        isRescaling = !isRescaling;
+        originalScale = transform.localScale;
         Debug.Log("Resize");
     }
 }

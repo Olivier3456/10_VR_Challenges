@@ -1048,7 +1048,7 @@
                     "name": "",
                     "id": "f363836a-6bd5-4a1a-b3f6-248710acc676",
                     "path": "<XRController>{RightHand}/triggerPressed",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "ResizeRight",
