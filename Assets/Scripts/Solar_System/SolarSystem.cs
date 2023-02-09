@@ -6,14 +6,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SolarSystem : MonoBehaviour
 {
     [SerializeField] private Transform[] attachPoints;
+    [Space(10)]
     [SerializeField] private Transform rightHand;
     [SerializeField] private Transform leftHand;
+    [Space(10)]
+    [Tooltip("The own XR Grab Interactable component of the object.")]
     [SerializeField] private XRGrabInteractable xrGrab;
     private Transform actualAttachPoint;
     private Transform handGrabbing;
+    [Space(10)]
+    [Tooltip("Maintains the rotation of the object when grabbed.")]
+    [SerializeField] private bool maintainRotation = true;
+    
 
-    public void grabbed(SelectEnterEventArgs interactor)     // Select the nearest attach point of the object when grabbed.
+    public void grabbed(SelectEnterEventArgs interactor)     // Selects the nearest attach point of the object when grabbed.
     {
+        Quaternion objectRotation = transform.rotation;
+
         float mindistanceFromHand = 1000;
         handGrabbing = interactor.interactorObject.transform;
 
@@ -24,8 +33,17 @@ public class SolarSystem : MonoBehaviour
             {
                 mindistanceFromHand = distanceFromHand;
                 actualAttachPoint = attachPoints[i];
+
+                if (maintainRotation)
+                {
+                       attachPoints[i].localRotation = Quaternion.identity;                   
+                 
+                    
+                
+                   
+                }
             }
-        }
-        xrGrab.attachTransform = actualAttachPoint;
+        }                
+        xrGrab.attachTransform = actualAttachPoint;       
     }
 }
