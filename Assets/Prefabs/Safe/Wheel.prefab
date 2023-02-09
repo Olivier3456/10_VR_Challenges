@@ -377,10 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694863be2efa66b4c88f4b242c48da09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandController: {fileID: 0}
-  leftHandController: {fileID: 0}
-  _vibrationsIntensity: 0.1
-  _vibrationsDuration: 0.1
+  _vibrationsIntensity: 0.05
+  _vibrationsDuration: 0.05
 --- !u!1 &8048079894305917112
 GameObject:
   m_ObjectHideFlags: 0
