@@ -10,15 +10,16 @@ public class SolarSystem : MonoBehaviour
     [SerializeField] private Transform leftHand;
     [SerializeField] private XRGrabInteractable xrGrab;
     private Transform actualAttachPoint;
+    private Transform handGrabbing;
 
-
-    public void grabbed()
+    public void grabbed(SelectEnterEventArgs interactor)     // Select the nearest attach point of the object when grabbed.
     {
         float mindistanceFromHand = 1000;
+        handGrabbing = interactor.interactorObject.transform;
 
         for (int i = 0; i < attachPoints.Length; i++)
         {
-            float distanceFromHand = Vector3.Distance(attachPoints[i].position, rightHand.position);           
+            float distanceFromHand = Vector3.Distance(attachPoints[i].position, handGrabbing.position);
             if (distanceFromHand < mindistanceFromHand)
             {
                 mindistanceFromHand = distanceFromHand;
@@ -27,7 +28,4 @@ public class SolarSystem : MonoBehaviour
         }
         xrGrab.attachTransform = actualAttachPoint;
     }
-
-
-   
 }

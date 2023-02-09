@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12860010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,34 +713,10 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257019475}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 257019475}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -896,7 +872,7 @@ GameObject:
   - component: {fileID: 309661603}
   - component: {fileID: 658849540098101887}
   - component: {fileID: 309661607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Planet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 426023200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464233825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,7 +1603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 620563360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,7 +1937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1006327361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1994,7 +1970,7 @@ GameObject:
   - component: {fileID: 1051165303}
   - component: {fileID: 1051165306}
   - component: {fileID: 1051165305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2546,7 +2522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1566000408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2712,7 +2688,7 @@ GameObject:
   - component: {fileID: 1844022934}
   - component: {fileID: 1844022933}
   - component: {fileID: 1844022932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Planet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2915,7 +2891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1934396339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2952,7 +2928,7 @@ GameObject:
   - component: {fileID: 2050285029}
   - component: {fileID: 2050285028}
   - component: {fileID: 2050285030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Solar_System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3094,7 +3070,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2050285030}
         m_TargetAssemblyTypeName: SolarSystem, Assembly-CSharp
         m_MethodName: grabbed
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3216,6 +3192,8 @@ MonoBehaviour:
   rightHand: {fileID: 257019473}
   leftHand: {fileID: 1423985586}
   xrGrab: {fileID: 2050285028}
+  rightHandController: {fileID: 241220414}
+  leftHandController: {fileID: 206555639}
 --- !u!1 &2112214509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,7 +3203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112214510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attach point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
