@@ -28,7 +28,9 @@ public class Planet : MonoBehaviour     // Don't forget to set this attach point
 
     bool leftHandInCollider;
     bool leftResizeTriggerPressed;
-      
+
+
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -37,6 +39,8 @@ public class Planet : MonoBehaviour     // Don't forget to set this attach point
 
         resizeLeftAction.action.Enable();
         resizeLeftAction.action.performed += ResizeLeft;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -48,6 +52,9 @@ public class Planet : MonoBehaviour     // Don't forget to set this attach point
             transform.localScale = new Vector3(handDistance / originalDistance * originalScale.x,
                                                handDistance / originalDistance * originalScale.y,
                                                handDistance / originalDistance * originalScale.z);
+
+            audioSource.pitch = originalDistance / handDistance;
+            if (!audioSource.isPlaying) audioSource.Play();
         }
     }
 
@@ -113,7 +120,11 @@ public class Planet : MonoBehaviour     // Don't forget to set this attach point
             originalScale = transform.localScale;
             isRescaling = true;
         }
-        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed) isRescaling = false;
+        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed)
+        {
+            isRescaling = false;
+            audioSource.Stop();
+        }
     }
 
     public void ResizeLeft(InputAction.CallbackContext obj)     // Ne pas oublier de mettre l'input en Press and Release.
@@ -126,6 +137,10 @@ public class Planet : MonoBehaviour     // Don't forget to set this attach point
             originalScale = transform.localScale;
             isRescaling = true;
         }
-        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed) isRescaling = false;
+        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed)
+        {
+            isRescaling = false;
+            audioSource.Stop();
+        }
     }
 }

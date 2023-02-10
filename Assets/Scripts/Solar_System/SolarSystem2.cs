@@ -17,6 +17,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     [SerializeField] private InputActionReference resizeRightAction;
     [SerializeField] private InputActionReference resizeLeftAction;
 
+
     bool isRescaling;
     float originalDistance;
     Vector3 originalScale;
@@ -27,6 +28,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     bool leftHandInCollider;
     bool leftResizeTriggerPressed;
 
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
 
         resizeLeftAction.action.Enable();
         resizeLeftAction.action.performed += ResizeLeft;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -46,8 +50,13 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
             transform.localScale = new Vector3(handDistance / originalDistance * originalScale.x,
                                                handDistance / originalDistance * originalScale.y,
                                                handDistance / originalDistance * originalScale.z);
+
+            audioSource.pitch = originalDistance / handDistance;
+            if (!audioSource.isPlaying) audioSource.Play();
         }
     }
+
+
 
 
     public void grabbed(SelectEnterEventArgs interactor)   // Must be called in the Select Entered event of the XR Grab Interactable.
