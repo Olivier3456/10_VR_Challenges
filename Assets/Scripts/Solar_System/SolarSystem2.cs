@@ -45,7 +45,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
             float handDistance = Vector3.Distance(rightHand.position, leftHand.position);
             transform.localScale = new Vector3(handDistance / originalDistance * originalScale.x,
                                                handDistance / originalDistance * originalScale.y,
-                                               handDistance / originalDistance * originalScale.z);      
+                                               handDistance / originalDistance * originalScale.z);
         }
     }
 
@@ -66,30 +66,30 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
         }
     }
 
-   
+
 
     private void OnTriggerEnter(Collider other)
-    {        
+    {
         if (other.name == rightHand.name)
         {
-            rightHandInCollider = true;           
+            rightHandInCollider = true;
         }
         else if (other.name == leftHand.name)
         {
-            leftHandInCollider = true;            
+            leftHandInCollider = true;
         }
     }
     private void OnTriggerExit(Collider other)
-    {       
+    {
         if (other.name == rightHand.name)
         {
             rightHandInCollider = false;
-        //    isRescaling = false;
+            //    isRescaling = false;   // Uncomment if you wan't the rescale stops when the hand exits the object.
         }
         else if (other.name == leftHand.name)
         {
             leftHandInCollider = false;
-        //    isRescaling = false;
+            //    isRescaling = false;    // Uncomment if you wan't the rescale stops when the hand exits the object.
         }
     }
 
@@ -101,7 +101,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
 
         if (rightResizeTriggerPressed && rightHandInCollider && handGrabbing != null && handGrabbing.name == leftHand.name)
         {
-            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);           
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
             originalScale = transform.localScale;
             isRescaling = true;
         }
@@ -114,7 +114,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
 
         if (leftResizeTriggerPressed && leftHandInCollider && handGrabbing != null && handGrabbing.name == rightHand.name)
         {
-            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);            
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
             originalScale = transform.localScale;
             isRescaling = true;
         }

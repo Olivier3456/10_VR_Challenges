@@ -23,7 +23,7 @@ public class SolarSystem : MonoBehaviour
     {
         Quaternion objectRotation = transform.rotation;
 
-        float mindistanceFromHand = 1000;
+        float mindistanceFromHand = 100000;
         handGrabbing = interactor.interactorObject.transform;
 
         for (int i = 0; i < attachPoints.Length; i++)
@@ -36,11 +36,14 @@ public class SolarSystem : MonoBehaviour
 
                 if (maintainRotation)
                 {
-                       attachPoints[i].localRotation = Quaternion.identity;                   
-                 
-                    
-                
-                   
+                    if (handGrabbing.name == rightHand.name)
+                    {                     
+                        attachPoints[i].rotation = rightHand.rotation;
+                    }
+                    else if (handGrabbing.name == leftHand.name)
+                    {                     
+                        attachPoints[i].rotation = leftHand.rotation;
+                    }
                 }
             }
         }                
