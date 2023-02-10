@@ -93,12 +93,12 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
         if (other.name == rightHand.name)
         {
             rightHandInCollider = false;
-            //    isRescaling = false;   // Uncomment if you wan't the rescale stops when the hand exits the object.
+         //       isRescaling = false;   // Uncomment if you wan't the rescale stops when the hand exits the object.
         }
         else if (other.name == leftHand.name)
         {
             leftHandInCollider = false;
-            //    isRescaling = false;    // Uncomment if you wan't the rescale stops when the hand exits the object.
+         //       isRescaling = false;    // Uncomment if you wan't the rescale stops when the hand exits the object.
         }
     }
 

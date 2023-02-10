@@ -8,6 +8,7 @@ TagManager:
   - Hands
   - Canette
   - Socket
+  - WheelGraduations
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Socket
   - Button
   - Bullet
-  - 
+  - Wheel
   - 
   - 
   - 

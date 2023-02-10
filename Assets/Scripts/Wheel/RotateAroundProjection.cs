@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class RotateAroundProjection : MonoBehaviour
 {
@@ -15,40 +9,30 @@ public class RotateAroundProjection : MonoBehaviour
 
     [SerializeField] private GameObject rightHand;
     [SerializeField] private GameObject leftHand;
-    private ActionBasedController rightHandController;      // Sert pour envoyer les vibrations aux manettes quand la roue tourne.
-    private ActionBasedController leftHandController;
+    
 
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
 
-    private AudioSource _wheelAudioSource;
-    private Vector3 lastRotationClick;
-    private bool alreadyClickedOnReturn;
-    [SerializeField] private float _angleBetweenClicks = 5;
-
+   
     [SerializeField] private GameObject parentObject;
     [SerializeField] private Transform pivot;
 
+  
     private Vector3 pointToProject;
     private Vector3 wheelNormal;
     private Vector3 planePoint;
     private Vector3 handProjection;
 
+    
+    public int ClicksCount { get; private set; }
+
     private Vector3 rightHandLastPosition;
 
-    private WheelVibrations vibrations;
-
     private void Start()
-    {
-        _wheelAudioSource = GetComponent<AudioSource>();
-        lastRotationClick = transform.forward;
-        _angleBetweenClicks /= 90;
-
-        vibrations = GetComponent<WheelVibrations>();
-        rightHandController = rightHand.GetComponent<ActionBasedController>();
-        leftHandController = leftHand.GetComponent<ActionBasedController>();
-
+    {    
         EnableInputActions();
     }
+
 
     private void EnableInputActions()
     {
@@ -110,27 +94,7 @@ public class RotateAroundProjection : MonoBehaviour
             // La roue va tourner autour de son propre axe, spécifié comme étant local (transform.TransformDirection) :            
             transform.RotateAround(transform.position, transform.TransformDirection(Vector3.up), angle);
 
-            rightHandLastPosition = handProjection;
-            CheckForClick();
+            rightHandLastPosition = handProjection;            
         }
-    }
-
-    private void CheckForClick()
-    {
-        float angleFromLastClick = Vector3.Dot(transform.forward, lastRotationClick.normalized);
-        if (angleFromLastClick < 1 - _angleBetweenClicks)       // Quand la roue arrive au prochain click :
-        {
-            _wheelAudioSource.Play();
-            vibrations.SendHapticImpulseToHand(rightHandController);
-            lastRotationClick = transform.forward;
-        }
-
-        if (angleFromLastClick > 0.999f && !alreadyClickedOnReturn) // Quand la roue repasse dans la zone de son dernier click et n'a pas déjà cliqué lors de ce retour.
-        {
-            _wheelAudioSource.Play();
-            vibrations.SendHapticImpulseToHand(rightHandController);
-            alreadyClickedOnReturn = true;
-        }
-        else if (angleFromLastClick <= 0.999f) alreadyClickedOnReturn = false;       // Si elle sort de la zone du dernier click, elle pourra y recliquer.
-    }
+    }    
 }
