@@ -281,12 +281,12 @@
                 },
                 {
                     "name": "ResizeLeft",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "24fcfcef-421e-41a8-9dd5-f03283b45b91",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "Press(behavior=2)",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

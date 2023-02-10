@@ -22,7 +22,11 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     Vector3 originalScale;
 
     bool rightHandInCollider;
+    bool rightResizeTriggerPressed;
+
     bool leftHandInCollider;
+    bool leftResizeTriggerPressed;
+
 
     private void Start()
     {
@@ -41,9 +45,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
             float handDistance = Vector3.Distance(rightHand.position, leftHand.position);
             transform.localScale = new Vector3(handDistance / originalDistance * originalScale.x,
                                                handDistance / originalDistance * originalScale.y,
-                                               handDistance / originalDistance * originalScale.z);
-
-            if (!rightHandInCollider || !leftHandInCollider) isRescaling = false;
+                                               handDistance / originalDistance * originalScale.z);      
         }
     }
 
@@ -67,8 +69,7 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
    
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.name + " est dans le collider.");
+    {        
         if (other.name == rightHand.name)
         {
             rightHandInCollider = true;           
@@ -79,15 +80,16 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
         }
     }
     private void OnTriggerExit(Collider other)
-    {
-        Debug.Log(other.name + " n'est plus dans le collider.");
+    {       
         if (other.name == rightHand.name)
         {
-            rightHandInCollider = false;            
+            rightHandInCollider = false;
+        //    isRescaling = false;
         }
         else if (other.name == leftHand.name)
         {
-            leftHandInCollider = false;           
+            leftHandInCollider = false;
+        //    isRescaling = false;
         }
     }
 
@@ -95,21 +97,27 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
 
     public void ResizeRight(InputAction.CallbackContext obj)     // Ne pas oublier de mettre l'input en Press and Release.
     {
-        if (rightHandInCollider && handGrabbing != null && handGrabbing.name == leftHand.name)
+        rightResizeTriggerPressed = !rightResizeTriggerPressed;
+
+        if (rightResizeTriggerPressed && rightHandInCollider && handGrabbing != null && handGrabbing.name == leftHand.name)
         {
-            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
-            isRescaling = !isRescaling;
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);           
             originalScale = transform.localScale;
-        }        
+            isRescaling = true;
+        }
+        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed) isRescaling = false;
     }
 
     public void ResizeLeft(InputAction.CallbackContext obj)     // Ne pas oublier de mettre l'input en Press and Release.
     {
-        if (leftHandInCollider && handGrabbing != null && handGrabbing.name == rightHand.name)
+        leftResizeTriggerPressed = !leftResizeTriggerPressed;
+
+        if (leftResizeTriggerPressed && leftHandInCollider && handGrabbing != null && handGrabbing.name == rightHand.name)
         {
-            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
-            isRescaling = !isRescaling;
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);            
             originalScale = transform.localScale;
+            isRescaling = true;
         }
+        if (!rightResizeTriggerPressed && !leftResizeTriggerPressed) isRescaling = false;
     }
 }
