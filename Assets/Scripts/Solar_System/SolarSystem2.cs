@@ -21,11 +21,16 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     float originalDistance;
     Vector3 originalScale;
 
+    bool rightHandInCollider;
+    bool leftHandInCollider;
+
     private void Start()
     {
         resizeRightAction.action.Enable();
-        resizeRightAction.action.performed += Resize;
-     //   originalScale = transform.localScale;
+        resizeRightAction.action.performed += ResizeRight;
+
+        resizeLeftAction.action.Enable();
+        resizeLeftAction.action.performed += ResizeLeft;
     }
 
 
@@ -37,6 +42,8 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
             transform.localScale = new Vector3(handDistance / originalDistance * originalScale.x,
                                                handDistance / originalDistance * originalScale.y,
                                                handDistance / originalDistance * originalScale.z);
+
+            if (!rightHandInCollider || !leftHandInCollider) isRescaling = false;
         }
     }
 
@@ -57,12 +64,52 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
         }
     }
 
+   
 
-    public void Resize(InputAction.CallbackContext context)     // Ne pas oublier de mettre l'action en Press and Release.
+    private void OnTriggerEnter(Collider other)
     {
-        originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
-        isRescaling = !isRescaling;
-        originalScale = transform.localScale;
-        Debug.Log("Resize");
+        Debug.Log(other.name + " est dans le collider.");
+        if (other.name == rightHand.name)
+        {
+            rightHandInCollider = true;           
+        }
+        else if (other.name == leftHand.name)
+        {
+            leftHandInCollider = true;            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log(other.name + " n'est plus dans le collider.");
+        if (other.name == rightHand.name)
+        {
+            rightHandInCollider = false;            
+        }
+        else if (other.name == leftHand.name)
+        {
+            leftHandInCollider = false;           
+        }
+    }
+
+
+
+    public void ResizeRight(InputAction.CallbackContext obj)     // Ne pas oublier de mettre l'input en Press and Release.
+    {
+        if (rightHandInCollider && handGrabbing != null && handGrabbing.name == leftHand.name)
+        {
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
+            isRescaling = !isRescaling;
+            originalScale = transform.localScale;
+        }        
+    }
+
+    public void ResizeLeft(InputAction.CallbackContext obj)     // Ne pas oublier de mettre l'input en Press and Release.
+    {
+        if (leftHandInCollider && handGrabbing != null && handGrabbing.name == rightHand.name)
+        {
+            originalDistance = Vector3.Distance(rightHand.position, leftHand.position);
+            isRescaling = !isRescaling;
+            originalScale = transform.localScale;
+        }
     }
 }

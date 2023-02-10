@@ -285,7 +285,7 @@
                     "id": "24fcfcef-421e-41a8-9dd5-f03283b45b91",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -841,7 +841,7 @@
                     "id": "62c3af12-6d54-443f-944e-79d28fc910ee",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -1048,7 +1048,7 @@
                     "name": "",
                     "id": "f363836a-6bd5-4a1a-b3f6-248710acc676",
                     "path": "<XRController>{RightHand}/triggerPressed",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ResizeRight",
