@@ -8,7 +8,8 @@ public class WheelNeedle : MonoBehaviour
 {
     public int graduation { get; private set; }
 
-    [SerializeField] private ActionBasedController rightHandController;      // Needed to send vibrations to the controller.
+    [Tooltip("Needed to send vibrations to the controller.")]
+    [SerializeField] private ActionBasedController rightHandController;
     // [SerializeField] private ActionBasedController leftHandController;
 
     [SerializeField] private Transform wheel;
@@ -45,7 +46,7 @@ public class WheelNeedle : MonoBehaviour
 
         for (int i = 0; i < anglesOfGraduations.Length; i++)
         {
-            if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed * Time.deltaTime * 100)      // If actual angle of the wheel is near a click angle
+            if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed * Time.deltaTime * 100)      // If the actual angle of the wheel is near a click angle:
             {
                 numberDisplayTMP.text = i.ToString();
                 if (!audioSource.isPlaying) audioSource.Play();
@@ -53,17 +54,4 @@ public class WheelNeedle : MonoBehaviour
             }
         }      
     }
-
-
-
-
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    Debug.Log(other.name + " is in the needle trigger");
-    //    graduation = int.Parse(other.name);
-    //    numberDisplayTMP.text = graduation.ToString();
-    //    audioSource.Play();
-    //    vibrations.SendHapticImpulseToHand(rightHandController);
-    //}
 }
