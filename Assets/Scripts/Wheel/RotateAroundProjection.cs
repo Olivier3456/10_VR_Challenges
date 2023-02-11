@@ -14,6 +14,7 @@ public class RotateAroundProjection : MonoBehaviour
 
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
 
+    [Tooltip("The wheel must be in a parent object that will be moved in the scene.")]
     [SerializeField] private GameObject parentObject;
 
     private Vector3 handPosition;

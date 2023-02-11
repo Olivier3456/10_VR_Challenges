@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(WheelVibrations))]
 public class WheelNeedle : MonoBehaviour
 {
     public int graduation { get; private set; }
@@ -18,13 +20,20 @@ public class WheelNeedle : MonoBehaviour
     private AudioSource audioSource;
     private WheelVibrations vibrations;
 
+    private WheelGameManager wheelGameManager;
+
     [SerializeField] private int numberOfGraduations = 10;
     private float[] anglesOfGraduations;
-    
+    public int graduationNumber { get; private set; }
+
+    private int lastClick = 0;
+
     private void Start()
     {
+        graduationNumber = 0;
+
         audioSource = GetComponent<AudioSource>();
-        vibrations = GetComponent<WheelVibrations>();              
+        vibrations = GetComponent<WheelVibrations>();
 
         anglesOfGraduations = new float[numberOfGraduations];
         float angleBetweenTwoClicks = 360 / numberOfGraduations;
@@ -34,7 +43,9 @@ public class WheelNeedle : MonoBehaviour
             angleOfLastClick += angleBetweenTwoClicks;
             if (angleOfLastClick > 180) angleOfLastClick = -(360 - angleOfLastClick);
             anglesOfGraduations[i] = angleOfLastClick;
-            Debug.Log("Click " + i + ": angle of " + anglesOfGraduations[i] + "°.");
+            //    Debug.Log("Click " + i + ": angle of " + anglesOfGraduations[i] + "°.");
+
+            wheelGameManager = GameObject.Find("Game Manager").GetComponent<WheelGameManager>();
         }
     }
 
@@ -42,16 +53,22 @@ public class WheelNeedle : MonoBehaviour
     public void VerifyGraduation(float wheelSpeed, float wheelAngle)
     {
         wheelSpeed = Mathf.Abs(wheelSpeed);
-        Debug.Log("wheelSpeed: " + wheelSpeed + "; " + "wheelAngle: " + wheelAngle);
+        //   Debug.Log("wheelSpeed: " + wheelSpeed + "; " + "wheelAngle: " + wheelAngle);
 
         for (int i = 0; i < anglesOfGraduations.Length; i++)
         {
-            if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed * Time.deltaTime * 100)      // If the actual angle of the wheel is near a click angle:
+            if (lastClick != i) //  To avoid the wheel to do several clicks at the same location.
             {
-                numberDisplayTMP.text = i.ToString();
-                if (!audioSource.isPlaying) audioSource.Play();
-                vibrations.SendHapticImpulseToHand(rightHandController);
+                if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed * Time.deltaTime * 100)      // If the actual angle of the wheel is near a click angle. Last number may be adjusted in proportion of the clicks distance.
+                {
+                    lastClick = i;
+                    numberDisplayTMP.text = i.ToString();
+                    if (!audioSource.isPlaying) audioSource.Play();
+                    vibrations.SendHapticImpulseToHand(rightHandController);
+                    graduationNumber = i;
+                    wheelGameManager.UpdateCode(i);
+                }
             }
-        }      
+        }
     }
 }
