@@ -1442,6 +1442,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367627872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 793616013, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+    type: 3}
+  m_PrefabInstance: {fileID: 3251499415375517522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc3413cb87b4e14f8d2aff925ab7fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1367627873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 793616009, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+    type: 3}
+  m_PrefabInstance: {fileID: 3251499415375517522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1462027095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8048079894305917115, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+    type: 3}
+  m_PrefabInstance: {fileID: 3251499415375517522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1584674636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2140,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 793616013, guid: 1f88b28f19b04e042bf5060e9c2e3583, type: 3}
+      propertyPath: wheel
+      value: 
+      objectReference: {fileID: 1462027095}
+    - target: {fileID: 793616013, guid: 1f88b28f19b04e042bf5060e9c2e3583, type: 3}
       propertyPath: numberDisplayTMP
       value: 
       objectReference: {fileID: 462782017}
@@ -2123,10 +2151,23 @@ PrefabInstance:
       propertyPath: rightHandController
       value: 
       objectReference: {fileID: 241220414}
+    - target: {fileID: 793616014, guid: 1f88b28f19b04e042bf5060e9c2e3583, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: efa4d4696b03d2740a64add20882c073, type: 3}
+    - target: {fileID: 793616015, guid: 1f88b28f19b04e042bf5060e9c2e3583, type: 3}
+      propertyPath: _vibrationsIntensity
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 793616016, guid: 1f88b28f19b04e042bf5060e9c2e3583, type: 3}
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 7134505015950210329, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: needle
+      value: 
+      objectReference: {fileID: 1367627873}
     - target: {fileID: 7134505015950210329, guid: 1f88b28f19b04e042bf5060e9c2e3583,
         type: 3}
       propertyPath: leftHand
@@ -2137,6 +2178,11 @@ PrefabInstance:
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 1111747206788557773}
+    - target: {fileID: 7134505015950210329, guid: 1f88b28f19b04e042bf5060e9c2e3583,
+        type: 3}
+      propertyPath: wheelNeedle
+      value: 
+      objectReference: {fileID: 1367627872}
     - target: {fileID: 8048079894305917112, guid: 1f88b28f19b04e042bf5060e9c2e3583,
         type: 3}
       propertyPath: m_Name
@@ -2529,6 +2575,7 @@ MonoBehaviour:
   leftHand: {fileID: 1986998659}
   parentObject: {fileID: 8761476652917395586}
   pivot: {fileID: 4267204490495050835}
+  needle: {fileID: 0}
 --- !u!54 &8761476652384219344
 Rigidbody:
   m_ObjectHideFlags: 0

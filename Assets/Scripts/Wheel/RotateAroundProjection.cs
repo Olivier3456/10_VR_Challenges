@@ -3,36 +3,42 @@ using UnityEngine.InputSystem;
 
 public class RotateAroundProjection : MonoBehaviour
 {
-    [SerializeField] private InputActionReference _gripWithRightHand;       // Grip action réglée en Press > Press Only.
-    [SerializeField] private InputActionReference _unGripWithRightHand;     // Grip action sur la même gâchette, réglée en Press > Release Only.
+    [Tooltip("Interactions mode of the input action must be set in: Press > Press Only.")]
+    [SerializeField] private InputActionReference _gripWithRightHand;
+    [Tooltip("Interactions mode of the input action must be set in mode: Press > Release Only.")]
+    [SerializeField] private InputActionReference _unGripWithRightHand;
     private bool _isGrippedByRightHand;
 
     [SerializeField] private GameObject rightHand;
     [SerializeField] private GameObject leftHand;
-    
 
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
 
-   
     [SerializeField] private GameObject parentObject;
-    [SerializeField] private Transform pivot;
 
-  
-    private Vector3 pointToProject;
+    private Vector3 handPosition;
     private Vector3 wheelNormal;
     private Vector3 planePoint;
     private Vector3 handProjection;
 
-    
-    public int ClicksCount { get; private set; }
-
     private Vector3 rightHandLastPosition;
 
-    private void Start()
-    {    
-        EnableInputActions();
-    }
+    [Tooltip("Must be in the plan of the wheel, at its start rotation, and be a child of the wheel.")]
+    [SerializeField] private Transform needle;
+    private WheelNeedle wheelNeedle;
+    private Vector3 startOrientation;
+    private Vector3 actualOrientation;
+    public float actualAngle { get; private set; }
 
+
+    private void Start()
+    {
+        EnableInputActions();
+        wheelNeedle = needle.GetComponent<WheelNeedle>();
+        startOrientation = Vector3.Normalize(needle.position - transform.position);
+        actualOrientation = startOrientation;
+        actualAngle = 0;
+    }
 
     private void EnableInputActions()
     {
@@ -45,9 +51,9 @@ public class RotateAroundProjection : MonoBehaviour
     private void ProjectHandPositionToWheelPlan()
     {
         wheelNormal = parentObject.transform.forward;
-        pointToProject = rightHand.transform.position;
+        handPosition = rightHand.transform.position;
         planePoint = transform.position;
-        handProjection = pointToProject - (Vector3.Dot(wheelNormal, pointToProject - planePoint) / Vector3.Dot(wheelNormal, wheelNormal)) * wheelNormal;
+        handProjection = handPosition - (Vector3.Dot(wheelNormal, handPosition - planePoint) / Vector3.Dot(wheelNormal, wheelNormal)) * wheelNormal;
     }
 
     private void GripTheWheel(InputAction.CallbackContext obj)
@@ -86,15 +92,19 @@ public class RotateAroundProjection : MonoBehaviour
         if (rightHandInColliders == 2 && _isGrippedByRightHand)
         {
             ProjectHandPositionToWheelPlan();
-            Vector3 directionFromPivotToLastHandProjection = Vector3.Normalize(pivot.position - handProjection);
-            Vector3 directionFromPivotToNewHandProjection = Vector3.Normalize(pivot.position - rightHandLastPosition);
+            Vector3 directionFromPivotToLastHandProjection = Vector3.Normalize(transform.position - handProjection);
+            Vector3 directionFromPivotToNewHandProjection = Vector3.Normalize(transform.position - rightHandLastPosition);
 
             float angle = Vector3.SignedAngle(directionFromPivotToNewHandProjection, directionFromPivotToLastHandProjection, Vector3.forward);
 
             // La roue va tourner autour de son propre axe, spécifié comme étant local (transform.TransformDirection) :            
             transform.RotateAround(transform.position, transform.TransformDirection(Vector3.up), angle);
 
-            rightHandLastPosition = handProjection;            
+            rightHandLastPosition = handProjection;
+
+            actualOrientation = Vector3.Normalize(needle.position - transform.position);
+            actualAngle = Vector3.SignedAngle(actualOrientation, startOrientation, Vector3.forward);
+            wheelNeedle.VerifyGraduation(angle, actualAngle);
         }
-    }    
+    }
 }
