@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -24,13 +22,12 @@ public class WheelNeedle : MonoBehaviour
 
     [SerializeField] private int numberOfGraduations = 10;
     private float[] anglesOfGraduations;
-    public int graduationNumber { get; private set; }
-
-    private int lastClick = 0;
+    public int lastClick { get; private set; }
+    
 
     private void Start()
     {
-        graduationNumber = 0;
+        lastClick = 0;
 
         audioSource = GetComponent<AudioSource>();
         vibrations = GetComponent<WheelVibrations>();
@@ -43,7 +40,7 @@ public class WheelNeedle : MonoBehaviour
             angleOfLastClick += angleBetweenTwoClicks;
             if (angleOfLastClick > 180) angleOfLastClick = -(360 - angleOfLastClick);
             anglesOfGraduations[i] = angleOfLastClick;
-            //    Debug.Log("Click " + i + ": angle of " + anglesOfGraduations[i] + "°.");
+            Debug.Log("Click " + i + ": angle of " + anglesOfGraduations[i] + "°.");
 
             wheelGameManager = GameObject.Find("Game Manager").GetComponent<WheelGameManager>();
         }
@@ -53,22 +50,50 @@ public class WheelNeedle : MonoBehaviour
     public void VerifyGraduation(float wheelSpeed, float wheelAngle)
     {
         wheelSpeed = Mathf.Abs(wheelSpeed);
-        //   Debug.Log("wheelSpeed: " + wheelSpeed + "; " + "wheelAngle: " + wheelAngle);
 
-        for (int i = 0; i < anglesOfGraduations.Length; i++)
-        {
-            if (lastClick != i) //  To avoid the wheel to do several clicks at the same location.
+        if (wheelSpeed < 100 / numberOfGraduations)     // First case: the wheel turns slowly. Precise detection of clicks, but can miss clicks if the wheel turns too fast.
+        {    
+            for (int i = 0; i < anglesOfGraduations.Length; i++)
             {
-                if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed * Time.deltaTime * 100)      // If the actual angle of the wheel is near a click angle. Last number may be adjusted in proportion of the clicks distance.
+                if (lastClick != i) //  To avoid the wheel to do several clicks at the same location.
                 {
-                    lastClick = i;
-                    numberDisplayTMP.text = i.ToString();
-                    if (!audioSource.isPlaying) audioSource.Play();
-                    vibrations.SendHapticImpulseToHand(rightHandController);
-                    graduationNumber = i;
-                    wheelGameManager.UpdateCode(i);
+                    if (Mathf.Abs(anglesOfGraduations[i] - wheelAngle) < wheelSpeed)
+                    {
+                        lastClick = i;
+                        numberDisplayTMP.text = i.ToString();
+                        if (!audioSource.isPlaying) audioSource.Play();
+                        vibrations.SendHapticImpulseToHand(rightHandController);                        
+                        wheelGameManager.UpdateCode(i);
+                    }
                 }
             }
+        }
+
+        else  // Second case: wheel turns faster. Less precise detection of clicks, but haven't missed any clicks during my tests.
+        {           
+            float angleFromWheelToNearestClick = 361;
+            int nearestClick = lastClick;
+
+            for (int i = 0; i < anglesOfGraduations.Length; i++)
+            {
+                float angleFromWheelToClickAtIndexI = Mathf.Abs(anglesOfGraduations[i] - wheelAngle);
+              
+                if (angleFromWheelToNearestClick > angleFromWheelToClickAtIndexI)
+                {
+                    angleFromWheelToNearestClick = angleFromWheelToClickAtIndexI;
+                    nearestClick = i;                   
+                }
+            }
+           
+            if (nearestClick != lastClick)
+            {
+                numberDisplayTMP.text = nearestClick.ToString();
+                if (!audioSource.isPlaying) audioSource.Play();
+                vibrations.SendHapticImpulseToHand(rightHandController);                
+                wheelGameManager.UpdateCode(nearestClick);            
+            }
+
+            lastClick = nearestClick;
         }
     }
 }

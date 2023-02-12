@@ -24,7 +24,7 @@ public class RotateAroundProjection : MonoBehaviour
 
     private Vector3 rightHandLastPosition;
 
-    [Tooltip("Must be in the plan of the wheel, at its start rotation, and be a child of the wheel.")]
+    [Tooltip("Must be on the plan of the wheel, at its start rotation, and be a child of the wheel.")]
     [SerializeField] private Transform needle;
     private WheelNeedle wheelNeedle;
     private Vector3 startOrientation;
@@ -96,7 +96,7 @@ public class RotateAroundProjection : MonoBehaviour
             Vector3 directionFromPivotToLastHandProjection = Vector3.Normalize(transform.position - handProjection);
             Vector3 directionFromPivotToNewHandProjection = Vector3.Normalize(transform.position - rightHandLastPosition);
 
-            float angle = Vector3.SignedAngle(directionFromPivotToNewHandProjection, directionFromPivotToLastHandProjection, Vector3.forward);
+            float angle = Vector3.SignedAngle(directionFromPivotToNewHandProjection, directionFromPivotToLastHandProjection, Vector3.forward);            
 
             // La roue va tourner autour de son propre axe, spécifié comme étant local (transform.TransformDirection) :            
             transform.RotateAround(transform.position, transform.TransformDirection(Vector3.up), angle);

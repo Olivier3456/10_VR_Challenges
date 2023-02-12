@@ -9,7 +9,7 @@ public class WheelGameManager : MonoBehaviour
 
     private int actualGraduation;
     private int lastGraduation = 0;
-    private int lastLastGraduation = 0;
+    private int penultimateGraduation = 0;
 
     private AudioSource audioSource;
     [SerializeField] AudioClip yesSound;
@@ -26,7 +26,7 @@ public class WheelGameManager : MonoBehaviour
 
     public void UpdateCode(int graduation)
     {
-        lastLastGraduation = lastGraduation;
+        penultimateGraduation = lastGraduation;
         lastGraduation = actualGraduation;
         actualGraduation = graduation;
 
@@ -37,7 +37,7 @@ public class WheelGameManager : MonoBehaviour
             audioSource.Play();
         }
 
-        if (actualGraduation == lastLastGraduation)   // If the wheel has gone backwards
+        if (actualGraduation == penultimateGraduation)   // If the wheel has gone backwards
         {
             code += lastGraduation.ToString();
             codeText.text = code;

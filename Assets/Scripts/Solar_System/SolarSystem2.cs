@@ -57,8 +57,6 @@ public class SolarSystem2 : MonoBehaviour     // Don't forget to set this attach
     }
 
 
-
-
     public void grabbed(SelectEnterEventArgs interactor)   // Must be called in the Select Entered event of the XR Grab Interactable.
     {
         handGrabbing = interactor.interactorObject.transform;
