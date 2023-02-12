@@ -9,6 +9,7 @@ TagManager:
   - Canette
   - Socket
   - WheelGraduations
+  - Markable
   layers:
   - Default
   - TransparentFX
