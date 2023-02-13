@@ -1,41 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pen : MonoBehaviour
 {
     [SerializeField] private TrailRenderer trail;
-    private int colliders;
+    private Vector3 trailLastEmittingPosition;
 
     void Start()
-    {
+    {        
         trail.emitting = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void Update()
     {
-        Debug.Log("On collision Enter");
+        Ray ray = new Ray(transform.position, transform.up);
+        RaycastHit hit;
 
-        if (collision.gameObject.CompareTag("Markable"))
-        {
-            colliders++;            
-        }
-
-        if (colliders >= 2)
-        {
+        if (Physics.Raycast(ray, out hit, 0.08f))
+        {            
+            Vector3 offset = hit.normal.normalized * 0.002f;
+            trail.transform.position = hit.point + offset;
+            trailLastEmittingPosition = hit.point + offset;
             trail.emitting = true;
-        }        
-    }
-
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("On collision Exit");
-
-        if (collision.gameObject.CompareTag("Markable"))
+        }
+        else
         {
-            colliders--;
             trail.emitting = false;
-        }        
+            trail.transform.position = trailLastEmittingPosition;
+        }  
     }
 }
