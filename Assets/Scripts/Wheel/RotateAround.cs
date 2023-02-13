@@ -18,11 +18,11 @@ public class RotateAround : MonoBehaviour
     private Vector3 rightHandLastPosition;
     private Vector3 rightHandNewPosition;
 
-    private Vector3 leftHandLastPosition;
-    private Vector3 leftHandNewPosition;
+    //private Vector3 leftHandLastPosition;
+    //private Vector3 leftHandNewPosition;
 
     private int rightHandInColliders = 0;       // La roue a deux colliders, la main ne pourra la tourner que lorsqu'elle sera dans les deux colliders à la fois.
-    private int leftHandInColliders = 0;
+    //private int leftHandInColliders = 0;
 
     [SerializeField] private float speed = 50000;
 

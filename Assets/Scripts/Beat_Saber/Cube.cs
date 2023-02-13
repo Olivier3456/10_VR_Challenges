@@ -5,6 +5,7 @@ using UnityEngine.Experimental.Rendering.RenderGraphModule;
 
 public enum cubeColor { Red, Blue }
 
+
 public class Cube : MonoBehaviour
 {
     public cubeColor color { get; private set; }
@@ -16,6 +17,8 @@ public class Cube : MonoBehaviour
     [SerializeField] private Material blueMat;
     private Beat_Saber_GM gameManager;
 
+    private bool isTouchedFromRightDirection;
+
 
     void Start()
     {
@@ -23,7 +26,7 @@ public class Cube : MonoBehaviour
 
         gameManager = GameObject.Find("Game Manager").GetComponent<Beat_Saber_GM>();
 
-        transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);       
+        transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);
     }
 
     void Update()
@@ -57,6 +60,19 @@ public class Cube : MonoBehaviour
         }
     }
 
+    public void TouchedFromRightDirection(string saber)
+    {
+        if (saber == "Saber_Red" && color == cubeColor.Red) isTouchedFromRightDirection = true;
+        else if (saber == "Saber_Blue" && color == cubeColor.Blue) isTouchedFromRightDirection = true;
+        StartCoroutine(WaitForCancelTouched());
+    }
+
+    IEnumerator WaitForCancelTouched()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isTouchedFromRightDirection = false;
+    }
+
 
     public void CubeMove()
     {
@@ -64,24 +80,16 @@ public class Cube : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {       
-        if (other.CompareTag("Blue_Saber") && color == cubeColor.Blue)
+    {
+        if (other.name == "Saber_Blue" && color == cubeColor.Blue && isTouchedFromRightDirection)
         {
             Destroy(gameObject);
             gameManager.UpdateScore(1);
         }
-        else if (other.CompareTag("Red_Saber") && color == cubeColor.Red)
+        else if (other.name == "Saber_Red" && color == cubeColor.Red && isTouchedFromRightDirection)
         {
             Destroy(gameObject);
             gameManager.UpdateScore(1);
-        }
-        else if (other.CompareTag("Red_Saber") && color == cubeColor.Blue)
-        {
-            gameManager.UpdateScore(-1);
-        }
-        else if (other.CompareTag("Blue_Saber") && color == cubeColor.Red)
-        {
-            gameManager.UpdateScore(-1);
         }
     }
 }
