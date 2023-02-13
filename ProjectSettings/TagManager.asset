@@ -10,6 +10,8 @@ TagManager:
   - Socket
   - WheelGraduations
   - Markable
+  - Blue_Saber
+  - Red_Saber
   layers:
   - Default
   - TransparentFX
