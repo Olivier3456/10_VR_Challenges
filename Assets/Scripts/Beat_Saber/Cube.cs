@@ -9,7 +9,7 @@ public class Cube : MonoBehaviour
 {
     public cubeColor color { get; private set; }
 
-    [SerializeField] private float speed = 0.1f;
+    public float speed = 0.1f;
     [Space(10)]
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] private Material redMat;
@@ -23,16 +23,17 @@ public class Cube : MonoBehaviour
 
         gameManager = GameObject.Find("Game Manager").GetComponent<Beat_Saber_GM>();
 
-        transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 5);
-
-        float newScale = Random.Range(0.15f, 0.3f);
-        transform.localScale = new Vector3(newScale, newScale, newScale);
+        transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);       
     }
 
     void Update()
     {
         CubeMove();
+        CheckBoundary();
+    }
 
+    private void CheckBoundary()
+    {
         if (transform.position.z < -1)
         {
             Destroy(gameObject);
@@ -63,8 +64,7 @@ public class Cube : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Qqch est entré dans le trigger d'un cube.");
+    {       
         if (other.CompareTag("Blue_Saber") && color == cubeColor.Blue)
         {
             Destroy(gameObject);
