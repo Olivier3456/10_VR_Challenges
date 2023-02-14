@@ -6,11 +6,14 @@ using UnityEngine.Experimental.Rendering.RenderGraphModule;
 using static Unity.VisualScripting.Member;
 
 public enum cubeColor { Red, Blue }
+public enum cubeOrientation { Left, Right, Top, Down }
 
 
 public class Cube : MonoBehaviour
 {
     public cubeColor color { get; private set; }
+
+    public int orientation;
 
     public float speed = 0.1f;
     [Space(10)]
@@ -23,10 +26,11 @@ public class Cube : MonoBehaviour
     [SerializeField] private AudioClip goodBell;
     [SerializeField] private AudioClip wrongBell;
 
-
     private Beat_Saber_GM gameManager;
 
+    private bool isTouched;
     private bool isTouchedFromRightDirection;
+    private bool isActive = true;
 
 
     void Start()
@@ -45,7 +49,28 @@ public class Cube : MonoBehaviour
     {
         CubeMove();
         CheckBoundary();
+        if (isActive) CheckIfTouched();
     }
+
+    private void CheckIfTouched()
+    {
+        if (isTouchedFromRightDirection)
+        {
+            audioSource.clip = goodBell;
+            audioSource.Play();
+            gameManager.UpdateScore(1);
+            Destroy(gameObject);
+        }
+        else if (isTouched)
+        {
+            audioSource.clip = wrongBell;
+            audioSource.Play();
+            isActive = false;
+            meshRenderer.material = blackMat;
+        }
+    }
+
+
 
     private void CheckBoundary()
     {
@@ -72,27 +97,36 @@ public class Cube : MonoBehaviour
         }
     }
 
-    public void TouchedFromRightDirection(string saber)
-    {
-        if (saber == "Saber_Red" && color == cubeColor.Red)
-        {
-            isTouchedFromRightDirection = true;
-            Debug.Log(gameObject.name + " TouchedFromRightDirection by " + saber);
-        }
+    //public void TouchedFromRightDirection(string saber)
+    //{
+    //    if (saber == "Saber_Red" && color == cubeColor.Red && isActive)
+    //    {
+    //        isTouchedFromRightDirection = true;
+    //    }
 
-        else if (saber == "Saber_Blue" && color == cubeColor.Blue)
+    //    else if (saber == "Saber_Blue" && color == cubeColor.Blue && isActive)
+    //    {
+    //        isTouchedFromRightDirection = true;
+    //    }
+    //}
+
+    public void TouchedByRaycast(string saber, Transform emitterPosition)
+    {
+        isTouched = true;
+
+        if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
         {
-            isTouchedFromRightDirection = true;
-            Debug.Log(gameObject.name + " TouchedFromRightDirection by " + saber);
+            if (orientation == 0 && emitterPosition.position.y < transform.position.y)
+            { isTouchedFromRightDirection = true; }
+            else if (orientation == 90 && emitterPosition.position.x > transform.position.x)
+            { isTouchedFromRightDirection = true; }
+            else if (orientation == 180 && emitterPosition.position.y > transform.position.y)
+            { isTouchedFromRightDirection = true; }
+            else if (orientation == 270 && emitterPosition.position.x < transform.position.x)
+            { isTouchedFromRightDirection = true; }
         }
-        StartCoroutine(WaitForCancelTouched());
     }
 
-    IEnumerator WaitForCancelTouched()
-    {
-        yield return new WaitForSeconds(0.5f);
-        isTouchedFromRightDirection = false;
-    }
 
 
     public void CubeMove()
@@ -100,34 +134,32 @@ public class Cube : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.name + " est entré dans le trigger d'un cube.");
-
-        if (other.name == "Saber_Blue_Raycast" && color == cubeColor.Blue && isTouchedFromRightDirection)
-        {
-            audioSource.clip = goodBell;
-            audioSource.Play();
-            gameManager.UpdateScore(1);
-            Destroy(gameObject);
-        }
-        else if (other.name == "Saber_Red_Raycast" && color == cubeColor.Red && isTouchedFromRightDirection)
-        {
-            audioSource.clip = goodBell;
-            audioSource.Play();
-            gameManager.UpdateScore(1);
-            Destroy(gameObject);
-        }
-        else if (other.name == "Saber_Red_Raycast" || other.name == "Saber_Blue_Raycast")
-        {
-            audioSource.clip = wrongBell;
-            audioSource.Play();
-            isTouchedFromRightDirection = false;
-            meshRenderer.material = blackMat;
-        }
-    }
 
 
 
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.name == "Saber_Blue_Raycast" && color == cubeColor.Blue && isTouchedFromRightDirection)
+    //    {
+    //        audioSource.clip = goodBell;
+    //        audioSource.Play();
+    //        gameManager.UpdateScore(1);
+    //        Destroy(gameObject);
+    //    }
+    //    else if (other.name == "Saber_Red_Raycast" && color == cubeColor.Red && isTouchedFromRightDirection)
+    //    {
+    //        audioSource.clip = goodBell;
+    //        audioSource.Play();
+    //        gameManager.UpdateScore(1);
+    //        Destroy(gameObject);
+    //    }
+    //    else if (other.name == "Saber_Red_Raycast" || other.name == "Saber_Blue_Raycast" && isActive)
+    //    {
+    //        audioSource.clip = wrongBell;
+    //        audioSource.Play();
+    //        isActive = false;
+    //        meshRenderer.material = blackMat;
+    //    }
+    //}
 }

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
@@ -34,11 +31,13 @@ public class CubeSpawner : MonoBehaviour
         float timeBeforeNextSpawn = Random.Range(0.5f, 1f);
         yield return new WaitForSeconds(timeBeforeNextSpawn);
         GameObject newCube = Instantiate(cubePrefab);
-        newCube.GetComponent<Cube>().speed = speedOfCubes;
-    
+        Cube cubeClassOfNewCube = newCube.GetComponent<Cube>();
+        cubeClassOfNewCube.speed = speedOfCubes;
 
         int orientation = Random.Range(0, 4) * 90;
+        cubeClassOfNewCube.orientation = orientation;
         newCube.transform.Rotate(newCube.transform.forward, orientation);
+        
 
         StartCoroutine(spawnCube());
     }
