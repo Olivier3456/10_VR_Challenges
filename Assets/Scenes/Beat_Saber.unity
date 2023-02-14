@@ -2883,6 +2883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 2378971977482493130, guid: 1fa0b7b8ca70e5b4aa81d9986721b6b2,
     type: 3}
+  numberOfCubesInThePool: 20
 --- !u!4 &1393100065
 Transform:
   m_ObjectHideFlags: 0

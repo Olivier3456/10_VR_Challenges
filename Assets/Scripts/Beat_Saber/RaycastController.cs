@@ -30,19 +30,7 @@ public class RaycastController : MonoBehaviour
         float distance = Vector3.Distance(actualPosition, lastPosition);
 
         if (testRaycast != null) testRaycast.transform.position = transform.position + (direction * distance * lengthMultiplier);
-
-        //RaycastHit hit;
-        //if (Physics.Raycast(transform.position, direction, out hit, distance * lengthMultiplier))
-        //{
-        //    CubeDirectionalCollider cubeDirectionalCollider = hit.transform.gameObject.GetComponent<CubeDirectionalCollider>();
-
-        //    if (cubeDirectionalCollider != null)
-        //    {
-        //        cubeDirectionalCollider.TouchedByRaycast(saberName);
-        //    }
-        //}
-
-
+        
         RaycastHit hit;
         if (Physics.Raycast(transform.position, direction, out hit, distance * lengthMultiplier))
         {
