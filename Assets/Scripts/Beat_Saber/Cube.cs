@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.RenderGraphModule;
+using static Unity.VisualScripting.Member;
 
 public enum cubeColor { Red, Blue }
 
@@ -15,6 +17,13 @@ public class Cube : MonoBehaviour
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] private Material redMat;
     [SerializeField] private Material blueMat;
+    [SerializeField] private Material blackMat;
+    [Space(5)]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip goodBell;
+    [SerializeField] private AudioClip wrongBell;
+
+
     private Beat_Saber_GM gameManager;
 
     private bool isTouchedFromRightDirection;
@@ -22,11 +31,14 @@ public class Cube : MonoBehaviour
 
     void Start()
     {
+        audioSource = GameObject.Find("CubeSounds").GetComponent<AudioSource>();
+
         ChoseColor();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<Beat_Saber_GM>();
 
         transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);
+        transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
     }
 
     void Update()
@@ -83,13 +95,28 @@ public class Cube : MonoBehaviour
     {
         if (other.name == "Saber_Blue" && color == cubeColor.Blue && isTouchedFromRightDirection)
         {
-            Destroy(gameObject);
+            audioSource.clip = goodBell;
+            audioSource.Play();
             gameManager.UpdateScore(1);
+            Destroy(gameObject);
         }
         else if (other.name == "Saber_Red" && color == cubeColor.Red && isTouchedFromRightDirection)
         {
-            Destroy(gameObject);
+            audioSource.clip = goodBell;
+            audioSource.Play();
             gameManager.UpdateScore(1);
+            Destroy(gameObject);
+        }
+        else if (other.name == "Saber_Red" || other.name == "Saber_Blue")
+        {
+            audioSource.clip = wrongBell;
+            audioSource.Play();
+            isTouchedFromRightDirection = false;
+            meshRenderer.material = blackMat;
         }
     }
+
+
+
+
 }
