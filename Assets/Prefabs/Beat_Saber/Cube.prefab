@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2228125641162713298}
   - component: {fileID: 5098241197661015925}
   - component: {fileID: 2437439432267994119}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
   redMat: {fileID: 2100000, guid: 58ec790d8a1b5564b860855e85a530ce, type: 2}
   blueMat: {fileID: 2100000, guid: fe0c243cd8c570749a3435e577266835, type: 2}
   blackMat: {fileID: 2100000, guid: f76c8e1dad25ecb47b620a056fd0f9e3, type: 2}
-  audioSource: {fileID: 2437439432267994119}
   goodBell: {fileID: 8300000, guid: c95b0cc43f8295d4b9349a7a6972f7fa, type: 3}
   wrongBell: {fileID: 8300000, guid: 688533bfacbbc954ebc75e0e43b90582, type: 3}
 --- !u!82 &2437439432267994119
@@ -232,7 +231,7 @@ GameObject:
   - component: {fileID: 1075212103128993284}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +523,7 @@ GameObject:
   - component: {fileID: 1919140833871279706}
   m_Layer: 0
   m_Name: Directional Collider
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

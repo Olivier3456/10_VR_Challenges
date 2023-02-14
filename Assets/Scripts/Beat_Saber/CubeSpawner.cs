@@ -23,7 +23,7 @@ public class CubeSpawner : MonoBehaviour
     IEnumerator AddDifficulty()
     {
         yield return new WaitForSeconds(5);
-        speedOfCubes += 0.03f;
+        speedOfCubes += 0.05f;
      //   spawnRate -= 0.04f;
         //   if (scaleOfCubes > 0.1f) scaleOfCubes -= 0.001f;
         StartCoroutine(AddDifficulty());

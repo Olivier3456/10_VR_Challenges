@@ -12,6 +12,7 @@ TagManager:
   - Markable
   - Blue_Saber
   - Red_Saber
+  - Cube
   layers:
   - Default
   - TransparentFX

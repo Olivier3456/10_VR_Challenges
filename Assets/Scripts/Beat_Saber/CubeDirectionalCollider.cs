@@ -8,13 +8,22 @@ public class CubeDirectionalCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Saber_Blue")
+        Debug.Log(other.name + " est entré dans le trigger d'un CubeDirectionalCollider");
+
+        if (other.CompareTag("Blue_Saber"))
         {
             cube.TouchedFromRightDirection("Saber_Blue");
+            Debug.Log("CubeDirectionalCollider appelle cube.TouchedFromRightDirection(\"Saber_Blue\")");
         }
-        else if (other.name == "Saber_Red")
+        else if (other.CompareTag("Red_Saber"))
         {
             cube.TouchedFromRightDirection("Saber_Red");
+            Debug.Log("CubeDirectionalCollider appelle cube.TouchedFromRightDirection(\"Saber_Red\")");
         }
+    }
+    
+    public void TouchedByRaycast(string saberName)
+    {
+        cube.TouchedFromRightDirection(saberName);
     }
 }

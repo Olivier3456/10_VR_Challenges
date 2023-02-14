@@ -74,8 +74,17 @@ public class Cube : MonoBehaviour
 
     public void TouchedFromRightDirection(string saber)
     {
-        if (saber == "Saber_Red" && color == cubeColor.Red) isTouchedFromRightDirection = true;
-        else if (saber == "Saber_Blue" && color == cubeColor.Blue) isTouchedFromRightDirection = true;
+        if (saber == "Saber_Red" && color == cubeColor.Red)
+        {
+            isTouchedFromRightDirection = true;
+            Debug.Log(gameObject.name + " TouchedFromRightDirection by " + saber);
+        }
+
+        else if (saber == "Saber_Blue" && color == cubeColor.Blue)
+        {
+            isTouchedFromRightDirection = true;
+            Debug.Log(gameObject.name + " TouchedFromRightDirection by " + saber);
+        }
         StartCoroutine(WaitForCancelTouched());
     }
 
@@ -93,21 +102,23 @@ public class Cube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Saber_Blue" && color == cubeColor.Blue && isTouchedFromRightDirection)
+        Debug.Log(other.name + " est entré dans le trigger d'un cube.");
+
+        if (other.name == "Saber_Blue_Raycast" && color == cubeColor.Blue && isTouchedFromRightDirection)
         {
             audioSource.clip = goodBell;
             audioSource.Play();
             gameManager.UpdateScore(1);
             Destroy(gameObject);
         }
-        else if (other.name == "Saber_Red" && color == cubeColor.Red && isTouchedFromRightDirection)
+        else if (other.name == "Saber_Red_Raycast" && color == cubeColor.Red && isTouchedFromRightDirection)
         {
             audioSource.clip = goodBell;
             audioSource.Play();
             gameManager.UpdateScore(1);
             Destroy(gameObject);
         }
-        else if (other.name == "Saber_Red" || other.name == "Saber_Blue")
+        else if (other.name == "Saber_Red_Raycast" || other.name == "Saber_Blue_Raycast")
         {
             audioSource.clip = wrongBell;
             audioSource.Play();
