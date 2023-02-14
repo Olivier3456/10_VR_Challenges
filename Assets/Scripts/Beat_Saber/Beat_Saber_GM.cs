@@ -15,7 +15,9 @@ public class Beat_Saber_GM : MonoBehaviour
 
     public void UpdateScore(int scoreDifference)
     {
-        score += scoreDifference;
+        if (scoreDifference > 0 && combo > 0) score += scoreDifference * combo;
+        else score += scoreDifference;
+                
         scoreText.text = "Score: " + score;
 
         if (scoreDifference > 0)
