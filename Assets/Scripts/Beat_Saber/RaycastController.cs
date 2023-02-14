@@ -12,9 +12,9 @@ public class RaycastController : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 actualPosition;
 
+    [SerializeField] VibrationsController vibrationsController;
+
     [SerializeField] GameObject testRaycast;
-
-
 
     void Start()
     {
@@ -39,6 +39,7 @@ public class RaycastController : MonoBehaviour
             if (cube != null)
             {
                 cube.TouchedByRaycast(saberName, transform);
+                vibrationsController.SendHapticImpulse();
             }
         }
 

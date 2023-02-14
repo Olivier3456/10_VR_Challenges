@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 232239367}
 --- !u!1 &62144145
 GameObject:
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &153402459
 GameObject:
@@ -2083,6 +2085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 939100978}
 --- !u!1 &832575517
 GameObject:
@@ -2158,7 +2161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886659534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.94, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2179,6 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 1589535280}
 --- !u!1 &912627918
 GameObject:
@@ -2205,7 +2209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912627918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.773, z: -0}
+  m_LocalPosition: {x: 0, y: 0.77, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2226,6 +2230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 1589535280}
 --- !u!1 &939100978
 GameObject:
@@ -2528,6 +2533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &1200896040
 GameObject:
@@ -2575,6 +2581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 939100978}
 --- !u!1 &1233222740
 GameObject:
@@ -2706,6 +2713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &1319992301
 GameObject:
@@ -2753,6 +2761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &1335846325
 GameObject:
@@ -3193,6 +3202,7 @@ GameObject:
   - component: {fileID: 1421011230}
   - component: {fileID: 1421011229}
   - component: {fileID: 1421011227}
+  - component: {fileID: 1421011231}
   m_Layer: 6
   m_Name: Saber_Red_Raycast
   m_TagString: Blue_Saber
@@ -3289,6 +3299,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421011224}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1421011231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421011224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5068fa655a6e2a543a708c8fb89a66a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handController: {fileID: 206555639}
+  _vibrationsIntensity: 1
+  _vibrationsDuration: 0.1
+  vibrationDelay: 0.4
 --- !u!1 &1457638106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +3889,7 @@ GameObject:
   - component: {fileID: 1652652314}
   - component: {fileID: 1652652313}
   - component: {fileID: 1652652310}
+  - component: {fileID: 1652652315}
   m_Layer: 6
   m_Name: Saber_Blue_Raycast
   m_TagString: Blue_Saber
@@ -3959,6 +3986,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652652308}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1652652315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652652308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5068fa655a6e2a543a708c8fb89a66a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handController: {fileID: 241220414}
+  _vibrationsIntensity: 1
+  _vibrationsDuration: 0.1
+  vibrationDelay: 0.4
 --- !u!1 &1741423272
 GameObject:
   m_ObjectHideFlags: 0
@@ -4005,6 +4048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &1753068797
 GameObject:
@@ -4052,6 +4096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 1540089336}
 --- !u!1 &1759354710
 GameObject:
@@ -4293,6 +4338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 232239367}
 --- !u!1 &1819212323
 GameObject:
@@ -4319,7 +4365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819212323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.764, z: 0}
+  m_LocalPosition: {x: 0, y: 0.775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4340,6 +4386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 1589535280}
 --- !u!1 &1889916572
 GameObject:
@@ -4387,6 +4434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Blue
+  vibrationsController: {fileID: 1652652315}
   testRaycast: {fileID: 939100978}
 --- !u!1 &1892243946
 GameObject:
@@ -4510,7 +4558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984954869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.94, z: 0}
+  m_LocalPosition: {x: 0, y: 1.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4531,6 +4579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 1589535280}
 --- !u!1 &2078030168
 GameObject:
@@ -4578,4 +4627,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lengthMultiplier: 5
   saberName: Saber_Red
+  vibrationsController: {fileID: 1421011231}
   testRaycast: {fileID: 939100978}
