@@ -33,7 +33,7 @@ public class CubeSpawner : MonoBehaviour
     private IEnumerator spawnCube()
     {
         float timeBeforeNextSpawn = Random.Range(spawnRate, spawnRate * 3);
-        if (spawnRate >= 0.2f) spawnRate -= 0.002f;
+        if (spawnRate >= 0.2f) spawnRate -= 0.001f;
         yield return new WaitForSeconds(timeBeforeNextSpawn);
 
         if (disabledCubes.Count > 0)

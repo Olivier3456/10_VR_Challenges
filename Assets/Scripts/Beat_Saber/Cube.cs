@@ -30,7 +30,7 @@ public class Cube : MonoBehaviour
 
     public bool isTouched;
     public bool isTouchedFromRightDirection;
-    public bool isActive = true;
+    public bool isActive = true;                    // isActive nous sert juste à ne pas déclencher plusieurs fois le son wrongBell.
 
     public CubeSpawner cubeSpawner;
 
@@ -64,7 +64,7 @@ public class Cube : MonoBehaviour
             gameManager.UpdateScore(1);
             gameObject.SetActive(false);
         }
-        else if (isTouched && isActive)
+        else if (isTouched)
         {
             audioSource.clip = wrongBell;
             audioSource.Play();
