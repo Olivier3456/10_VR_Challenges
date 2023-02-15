@@ -105,24 +105,58 @@ public class Cube : MonoBehaviour
         }
     }
 
+    //public void TouchedByRaycast(string saber, Transform emitterPosition)
+    //{
+    //    if (!isTouched)
+    //    {
+    //        if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
+    //        {
+    //            if (orientation == 0 && emitterPosition.position.y + transform.localScale.y * 0.5f < transform.position.y)      // Si le sabre est dans la direction de la flèche.
+    //            { isTouchedFromRightDirection = true; }
+    //            else if (orientation == 90 && emitterPosition.position.x - transform.localScale.x * 0.5f > transform.position.x)
+    //            { isTouchedFromRightDirection = true; }
+    //            else if (orientation == 180 && emitterPosition.position.y - transform.localScale.y * 0.5f > transform.position.y)
+    //            { isTouchedFromRightDirection = true; }
+    //            else if (orientation == 270 && emitterPosition.position.x + transform.localScale.x * 0.5f < transform.position.x)
+    //            { isTouchedFromRightDirection = true; }               
+    //        }
+    //        isTouched = true;
+    //    }
+    //}
+
+
+
     public void TouchedByRaycast(string saber, Transform emitterPosition)
     {
         if (!isTouched)
         {
             if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
             {
-                if (orientation == 0 && emitterPosition.position.y < transform.position.y)
-                { isTouchedFromRightDirection = true; }
-                else if (orientation == 90 && emitterPosition.position.x > transform.position.x)
-                { isTouchedFromRightDirection = true; }
-                else if (orientation == 180 && emitterPosition.position.y > transform.position.y)
-                { isTouchedFromRightDirection = true; }
-                else if (orientation == 270 && emitterPosition.position.x < transform.position.x)
-                { isTouchedFromRightDirection = true; }
+                // Normalise les vecteurs pour nous assurer qu'ils ont une longueur égale à 1
+                Vector3 normalizedCubeDirection = transform.forward.normalized;
+                Vector3 normalizedSabreMovementDirection = emitterPosition.position.normalized; // Attention, il faudra remplacer emitterPosition, qui ne correspond pas à une direction : il faudra faire passer la direction de RaycastController.
+
+                // Projette les vecteurs sur le plan du cube en fixant l'axe y à zéro
+                Vector3 projectedCubeDirection = Vector3.ProjectOnPlane(normalizedCubeDirection, Vector3.forward);           // Attention, il ne s'agira peut-être pas de Vector3.forward. A voir en test.
+                Vector3 projectedSabreMovementDirection = Vector3.ProjectOnPlane(normalizedSabreMovementDirection, Vector3.forward);
+
+                // Calcule l'angle entre les deux vecteurs projetés sur le plan horizontal
+                // float angle = Vector3.Angle(projectedCubeDirection, projectedSabreMovementDirection);
+                float signedAngle = Vector3.SignedAngle(projectedCubeDirection, projectedSabreMovementDirection, Vector3.forward);  // Changer forward ici aussi si besoin.
+
+                // Ajuste l'angle pour obtenir un angle entre 0 et 360 degrés
+                float angle = (signedAngle < 0) ? 360 + signedAngle : signedAngle;
+
+
+                Debug.Log("Angle entre les deux directions : " + signedAngle + " degrés");
             }
             isTouched = true;
         }
     }
+
+
+
+
 
     public void CubeMove()
     {
