@@ -38,7 +38,8 @@ public class RaycastController : MonoBehaviour
 
             if (cube != null)
             {
-                cube.TouchedByRaycast(saberName, transform);
+             //   cube.TouchedByRaycast(saberName, transform);
+                cube.TouchedByRaycast(saberName, direction);
                 vibrationsController.SendHapticImpulse();
             }
         }

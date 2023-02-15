@@ -126,29 +126,25 @@ public class Cube : MonoBehaviour
 
 
 
-    public void TouchedByRaycast(string saber, Transform emitterPosition)
+    public void TouchedByRaycast(string saber, Vector3 emitterDirection)
     {
         if (!isTouched)
         {
             if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
-            {
-                // Normalise les vecteurs pour nous assurer qu'ils ont une longueur égale à 1
-                Vector3 normalizedCubeDirection = transform.forward.normalized;
-                Vector3 normalizedSabreMovementDirection = emitterPosition.position.normalized; // Attention, il faudra remplacer emitterPosition, qui ne correspond pas à une direction : il faudra faire passer la direction de RaycastController.
+            {                
+                Vector3 cubeDirection = transform.up.normalized;
 
-                // Projette les vecteurs sur le plan du cube en fixant l'axe y à zéro
-                Vector3 projectedCubeDirection = Vector3.ProjectOnPlane(normalizedCubeDirection, Vector3.forward);           // Attention, il ne s'agira peut-être pas de Vector3.forward. A voir en test.
-                Vector3 projectedSabreMovementDirection = Vector3.ProjectOnPlane(normalizedSabreMovementDirection, Vector3.forward);
+                float alignment = Vector3.Dot(emitterDirection, cubeDirection);
+                Debug.Log("Vector3.Dot() entre la flèche du cube et le mouvement du sabre qui a touché le cube : " + alignment);
 
-                // Calcule l'angle entre les deux vecteurs projetés sur le plan horizontal
-                // float angle = Vector3.Angle(projectedCubeDirection, projectedSabreMovementDirection);
-                float signedAngle = Vector3.SignedAngle(projectedCubeDirection, projectedSabreMovementDirection, Vector3.forward);  // Changer forward ici aussi si besoin.
+                if (alignment >= 0.5f) isTouchedFromRightDirection = true;
 
-                // Ajuste l'angle pour obtenir un angle entre 0 et 360 degrés
-                float angle = (signedAngle < 0) ? 360 + signedAngle : signedAngle;
+                
 
 
-                Debug.Log("Angle entre les deux directions : " + signedAngle + " degrés");
+
+
+
             }
             isTouched = true;
         }
