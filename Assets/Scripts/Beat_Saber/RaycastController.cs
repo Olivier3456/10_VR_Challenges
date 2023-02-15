@@ -5,16 +5,18 @@ using UnityEngine.UIElements;
 
 public class RaycastController : MonoBehaviour
 {
-    [SerializeField] private float lengthMultiplier = 1f; // Facteur de multiplication de la longueur du raycast.
-
+    [Tooltip("Saber_Red or Saber_blue (see Cube class, method TouchedByRaycast())")]
     [SerializeField] private string saberName;
 
     private Vector3 lastPosition;
     private Vector3 actualPosition;
 
+    [Tooltip("The saber itself.")]
     [SerializeField] VibrationsController vibrationsController;
-
-    [SerializeField] GameObject testRaycast;
+    [Tooltip("Multiply the length of the raycast for better detection of the cubes. The right value can vary in regard of the length of the saber, the size of the objects du detect, etc.")]
+    [SerializeField] private float lengthMultiplier = 4f;
+    [Tooltip("Draw lines for showing the raycasts which detect the cubes.")]
+    public bool debugMod = true;
 
     void Start()
     {
@@ -29,21 +31,21 @@ public class RaycastController : MonoBehaviour
         Vector3 direction = (actualPosition - lastPosition).normalized;
         float distance = Vector3.Distance(actualPosition, lastPosition);
 
-        if (testRaycast != null) testRaycast.transform.position = transform.position + (direction * distance * lengthMultiplier);
-        
+        float raycastLength = 0.05f + distance * lengthMultiplier;        
+
+        if (debugMod) Debug.DrawLine(actualPosition, actualPosition + direction * raycastLength, UnityEngine.Color.green);
+
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, distance * lengthMultiplier))
+        if (Physics.Raycast(transform.position, direction, out hit, raycastLength))
         {
             Cube cube = hit.transform.gameObject.GetComponent<Cube>();
 
             if (cube != null)
-            {
-             //   cube.TouchedByRaycast(saberName, transform);
+            {            
                 cube.TouchedByRaycast(saberName, direction);
                 vibrationsController.SendHapticImpulse();
             }
         }
-
         lastPosition = actualPosition;
     }
 }

@@ -107,7 +107,7 @@ public class Cube : MonoBehaviour
         }
     }
 
-    public void TouchedByRaycast(string saber, Transform emitterPosition)       // Méthode de la comparaison des positions. Pas très élégante, mais fonctionne plutôt bien.
+    public void TouchedByRaycast(string saber, Transform emitterPosition)       // (Ancienne méthode) comparaison des positions. Pas très élégante, mais fonctionne plutôt bien.
     {
         if (!isTouched)
         {
@@ -127,12 +127,12 @@ public class Cube : MonoBehaviour
     }
 
 
-    public void TouchedByRaycast(string saber, Vector3 emitterDirection)   // Méthode de la comparaison des angles, avec projection sur un même plan. Plus précise et paramétrable.
+    public void TouchedByRaycast(string saber, Vector3 emitterDirection)   // (Nouvelle méthode) comparaison des angles, avec projection sur un même plan. Plus précis et paramétrable (angle de tolérance réglable).
     {
         if (!isTouched)
         {
             if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
-            {               
+            {
                 // Le plan sur lequel les deux vecteurs seront projetés (le plan forward du cube) :
                 Vector3 normal = transform.forward.normalized;
 
@@ -142,16 +142,15 @@ public class Cube : MonoBehaviour
 
                 // Calcul de l'angle entre les deux vecteurs projetés :
                 float angle = Vector3.Angle(projectedCubeDirection, projectedSabreDirection);
-                Debug.Log("Angle entre la flèche du cube et le mouvement du sabre qui a touché le cube :" + angle);
 
-                if (angle < toleranceAngle) isTouchedFromRightDirection = true;
+                if (angle < toleranceAngle)
+                {
+                    isTouchedFromRightDirection = true;
+                }
             }
             isTouched = true;
         }
     }
-
-
-
 
 
     public void CubeMove()

@@ -123,102 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &34490030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 34490031}
-  - component: {fileID: 34490032}
-  m_Layer: 6
-  m_Name: RaycastController (2)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &34490031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34490030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.071, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &34490032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34490030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 232239367}
---- !u!1 &62144145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 62144146}
-  - component: {fileID: 62144147}
-  m_Layer: 6
-  m_Name: RaycastController (3)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &62144146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62144145}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.411, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &62144147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62144145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 1540089336}
 --- !u!1 &153402459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,54 +2137,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &767672503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 767672504}
-  - component: {fileID: 767672505}
-  m_Layer: 6
-  m_Name: RaycastController (5)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &767672504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767672503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.361, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &767672505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767672503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 939100978}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,102 +2283,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &886659534
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 886659535}
-  - component: {fileID: 886659536}
-  m_Layer: 6
-  m_Name: RaycastController
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &886659535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886659534}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &886659536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886659534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 1589535280}
---- !u!1 &912627918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 912627919}
-  - component: {fileID: 912627920}
-  m_Layer: 6
-  m_Name: RaycastController (4)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &912627919
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912627918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.77, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &912627920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912627918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 1589535280}
 --- !u!43 &933265878
 Mesh:
   m_ObjectHideFlags: 0
@@ -2942,102 +2702,6 @@ Transform:
   m_Father: {fileID: 218123165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1183620526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1183620527}
-  - component: {fileID: 1183620528}
-  m_Layer: 6
-  m_Name: RaycastController (7)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1183620527
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183620526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.703, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1183620528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183620526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 1540089336}
---- !u!1 &1200896040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1200896041}
-  - component: {fileID: 1200896042}
-  m_Layer: 6
-  m_Name: RaycastController (5)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1200896041
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200896040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.321, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200896042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200896040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 939100978}
 --- !u!1 &1233222740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,102 +2786,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1274209433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1274209434}
-  - component: {fileID: 1274209435}
-  m_Layer: 6
-  m_Name: RaycastController (6)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1274209434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274209433}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.212, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1274209435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274209433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 1540089336}
---- !u!1 &1319992301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1319992302}
-  - component: {fileID: 1319992303}
-  m_Layer: 6
-  m_Name: RaycastController (7)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1319992302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319992301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.695, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1319992303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319992301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 1540089336}
 --- !u!1 &1335846325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,131 +3213,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1421011224
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1421011225}
-  - component: {fileID: 1421011230}
-  - component: {fileID: 1421011229}
-  - component: {fileID: 1421011227}
-  - component: {fileID: 1421011231}
-  m_Layer: 6
-  m_Name: Saber_Red_Raycast
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1421011225
+--- !u!4 &1421011225 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+    type: 3}
+  m_PrefabInstance: {fileID: 8323946656537090185}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421011224}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.342, z: 0.402}
-  m_LocalScale: {x: 0.03, y: 0.6, z: 0.030000001}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1984954870}
-  - {fileID: 1819212324}
-  - {fileID: 2078030169}
-  - {fileID: 1200896041}
-  - {fileID: 34490031}
-  - {fileID: 1753068798}
-  - {fileID: 62144146}
-  - {fileID: 1183620527}
-  m_Father: {fileID: 206555635}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!54 &1421011227
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421011224}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
---- !u!23 &1421011229
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421011224}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 58ec790d8a1b5564b860855e85a530ce, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1421011230
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421011224}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1421011231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421011224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5068fa655a6e2a543a708c8fb89a66a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handController: {fileID: 206555639}
-  _vibrationsIntensity: 1
-  _vibrationsDuration: 0.1
-  vibrationDelay: 0.4
 --- !u!1 &1457638106
 GameObject:
   m_ObjectHideFlags: 0
@@ -4332,131 +3781,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1652652308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1652652309}
-  - component: {fileID: 1652652314}
-  - component: {fileID: 1652652313}
-  - component: {fileID: 1652652310}
-  - component: {fileID: 1652652315}
-  m_Layer: 6
-  m_Name: Saber_Blue_Raycast
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1652652309
+--- !u!4 &1652652309 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6388588255025320203}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652652308}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.342, z: 0.402}
-  m_LocalScale: {x: 0.03, y: 0.6, z: 0.030000001}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 886659535}
-  - {fileID: 912627919}
-  - {fileID: 1889916573}
-  - {fileID: 767672504}
-  - {fileID: 1800846828}
-  - {fileID: 1274209434}
-  - {fileID: 1741423273}
-  - {fileID: 1319992302}
-  m_Father: {fileID: 241220410}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!54 &1652652310
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652652308}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
---- !u!23 &1652652313
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652652308}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fe0c243cd8c570749a3435e577266835, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1652652314
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652652308}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1652652315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652652308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5068fa655a6e2a543a708c8fb89a66a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handController: {fileID: 241220414}
-  _vibrationsIntensity: 1
-  _vibrationsDuration: 0.1
-  vibrationDelay: 0.4
 --- !u!1 &1712292654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,102 +3884,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1741423272
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741423273}
-  - component: {fileID: 1741423274}
-  m_Layer: 6
-  m_Name: RaycastController (3)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1741423273
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741423272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.411, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1741423274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741423272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 1540089336}
---- !u!1 &1753068797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1753068798}
-  - component: {fileID: 1753068799}
-  m_Layer: 6
-  m_Name: RaycastController (6)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1753068798
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753068797}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.166, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1753068799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753068797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 1540089336}
 --- !u!1 &1759354710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,150 +4078,6 @@ Transform:
   m_Father: {fileID: 1233222741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1800846827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1800846828}
-  - component: {fileID: 1800846829}
-  m_Layer: 6
-  m_Name: RaycastController (2)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1800846828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800846827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.071, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800846829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800846827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 232239367}
---- !u!1 &1819212323
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1819212324}
-  - component: {fileID: 1819212325}
-  m_Layer: 6
-  m_Name: RaycastController (4)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1819212324
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819212323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.775, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1819212325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819212323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 1589535280}
---- !u!1 &1889916572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1889916573}
-  - component: {fileID: 1889916574}
-  m_Layer: 6
-  m_Name: RaycastController (1)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1889916573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889916572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.539, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1652652309}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1889916574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889916572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Blue
-  vibrationsController: {fileID: 1652652315}
-  testRaycast: {fileID: 939100978}
 --- !u!1 &1892243946
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,99 +4259,331 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa0b7b8ca70e5b4aa81d9986721b6b2, type: 3}
---- !u!1 &1984954869
-GameObject:
+--- !u!1001 &6388588255025320203
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1984954870}
-  - component: {fileID: 1984954871}
-  m_Layer: 6
-  m_Name: RaycastController
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1984954870
-Transform:
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 241220410}
+    m_Modifications:
+    - target: {fileID: 2812346666244857897, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253156575125, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 939100978}
+    - target: {fileID: 6388588253156575125, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253377221537, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 6388588253377221537, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705552, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: handController
+      value: 
+      objectReference: {fileID: 241220414}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705566, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253456705567, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: m_Name
+      value: Saber_Blue_Raycast
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588253570854118, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 232239367}
+    - target: {fileID: 6388588253570854118, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588254063045348, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 6388588254063045348, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588254118458768, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 6388588254118458768, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588254167107803, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1589535280}
+    - target: {fileID: 6388588254167107803, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588254192585179, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1589535280}
+    - target: {fileID: 6388588254192585179, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388588254551445938, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 939100978}
+    - target: {fileID: 6388588254551445938, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888211856009021610, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 77e63a42ccd7f304c8e406ff3ba6d6c9, type: 3}
+--- !u!1001 &8323946656537090185
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984954869}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1984954871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984954869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 1589535280}
---- !u!1 &2078030168
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2078030169}
-  - component: {fileID: 2078030170}
-  m_Layer: 6
-  m_Name: RaycastController (1)
-  m_TagString: Blue_Saber
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2078030169
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078030168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.539, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1421011225}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2078030170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078030168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ee137b3162fba4f83e2ec1275c3c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lengthMultiplier: 5
-  saberName: Saber_Red
-  vibrationsController: {fileID: 1421011231}
-  testRaycast: {fileID: 939100978}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 206555635}
+    m_Modifications:
+    - target: {fileID: 2971933929950769745, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823952451478409617, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655573148985, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 8323946655573148985, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655588393123, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 939100978}
+    - target: {fileID: 8323946655588393123, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.342
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256656, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256657, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: m_Name
+      value: Saber_Red_Raycast
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655804256662, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: handController
+      value: 
+      objectReference: {fileID: 206555639}
+    - target: {fileID: 8323946655867743350, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 8323946655867743350, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946655936111276, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1589535280}
+    - target: {fileID: 8323946655936111276, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946656197091795, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 939100978}
+    - target: {fileID: 8323946656197091795, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946656372463998, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1589535280}
+    - target: {fileID: 8323946656372463998, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946656571579961, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 232239367}
+    - target: {fileID: 8323946656571579961, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323946656592930330, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: testRaycast
+      value: 
+      objectReference: {fileID: 1540089336}
+    - target: {fileID: 8323946656592930330, guid: 79579e59c0a462b4ca42fdd324cea885,
+        type: 3}
+      propertyPath: lengthMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79579e59c0a462b4ca42fdd324cea885, type: 3}
