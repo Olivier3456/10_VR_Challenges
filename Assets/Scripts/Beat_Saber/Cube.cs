@@ -25,6 +25,8 @@ public class Cube : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip goodBell;
     [SerializeField] private AudioClip wrongBell;
+    [Space(5)]
+    [SerializeField] private float toleranceAngle = 40;
 
     private Beat_Saber_GM gameManager;
 
@@ -105,46 +107,44 @@ public class Cube : MonoBehaviour
         }
     }
 
-    //public void TouchedByRaycast(string saber, Transform emitterPosition)
-    //{
-    //    if (!isTouched)
-    //    {
-    //        if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
-    //        {
-    //            if (orientation == 0 && emitterPosition.position.y + transform.localScale.y * 0.5f < transform.position.y)      // Si le sabre est dans la direction de la flèche.
-    //            { isTouchedFromRightDirection = true; }
-    //            else if (orientation == 90 && emitterPosition.position.x - transform.localScale.x * 0.5f > transform.position.x)
-    //            { isTouchedFromRightDirection = true; }
-    //            else if (orientation == 180 && emitterPosition.position.y - transform.localScale.y * 0.5f > transform.position.y)
-    //            { isTouchedFromRightDirection = true; }
-    //            else if (orientation == 270 && emitterPosition.position.x + transform.localScale.x * 0.5f < transform.position.x)
-    //            { isTouchedFromRightDirection = true; }               
-    //        }
-    //        isTouched = true;
-    //    }
-    //}
-
-
-
-    public void TouchedByRaycast(string saber, Vector3 emitterDirection)
+    public void TouchedByRaycast(string saber, Transform emitterPosition)       // Méthode de la comparaison des positions. Pas très élégante, mais fonctionne plutôt bien.
     {
         if (!isTouched)
         {
             if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
-            {                
-                Vector3 cubeDirection = transform.up.normalized;
+            {
+                if (orientation == 0 && emitterPosition.position.y + transform.localScale.y * 0.5f < transform.position.y)      // Si le sabre est dans la direction de la flèche.
+                { isTouchedFromRightDirection = true; }
+                else if (orientation == 90 && emitterPosition.position.x - transform.localScale.x * 0.5f > transform.position.x)
+                { isTouchedFromRightDirection = true; }
+                else if (orientation == 180 && emitterPosition.position.y - transform.localScale.y * 0.5f > transform.position.y)
+                { isTouchedFromRightDirection = true; }
+                else if (orientation == 270 && emitterPosition.position.x + transform.localScale.x * 0.5f < transform.position.x)
+                { isTouchedFromRightDirection = true; }
+            }
+            isTouched = true;
+        }
+    }
 
-                float alignment = Vector3.Dot(emitterDirection, cubeDirection);
-                Debug.Log("Vector3.Dot() entre la flèche du cube et le mouvement du sabre qui a touché le cube : " + alignment);
 
-                if (alignment >= 0.5f) isTouchedFromRightDirection = true;
+    public void TouchedByRaycast(string saber, Vector3 emitterDirection)   // Méthode de la comparaison des angles, avec projection sur un même plan. Plus précise et paramétrable.
+    {
+        if (!isTouched)
+        {
+            if ((saber == "Saber_Red" && color == cubeColor.Red) || (saber == "Saber_Blue" && color == cubeColor.Blue))
+            {               
+                // Le plan sur lequel les deux vecteurs seront projetés (le plan forward du cube) :
+                Vector3 normal = transform.forward.normalized;
 
-                
+                // Projection de la direction du cube et de la direction du sabre sur le plan :
+                Vector3 projectedCubeDirection = Vector3.ProjectOnPlane(transform.up, normal);
+                Vector3 projectedSabreDirection = Vector3.ProjectOnPlane(emitterDirection, normal);
 
+                // Calcul de l'angle entre les deux vecteurs projetés :
+                float angle = Vector3.Angle(projectedCubeDirection, projectedSabreDirection);
+                Debug.Log("Angle entre la flèche du cube et le mouvement du sabre qui a touché le cube :" + angle);
 
-
-
-
+                if (angle < toleranceAngle) isTouchedFromRightDirection = true;
             }
             isTouched = true;
         }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f67901ef3f49244086492e9f39e38b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: 0
   speed: 1
   meshRenderer: {fileID: 6833809627445738469}
   redMat: {fileID: 2100000, guid: 58ec790d8a1b5564b860855e85a530ce, type: 2}
@@ -120,6 +121,11 @@ MonoBehaviour:
   blackMat: {fileID: 2100000, guid: f76c8e1dad25ecb47b620a056fd0f9e3, type: 2}
   goodBell: {fileID: 8300000, guid: c95b0cc43f8295d4b9349a7a6972f7fa, type: 3}
   wrongBell: {fileID: 8300000, guid: 688533bfacbbc954ebc75e0e43b90582, type: 3}
+  toleranceAngle: 40
+  isTouched: 0
+  isTouchedFromRightDirection: 0
+  isActive: 1
+  cubeSpawner: {fileID: 0}
 --- !u!82 &2437439432267994119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -618,4 +624,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82cfd7281f1d204a99b1deb102a53ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 5098241197661015925}
