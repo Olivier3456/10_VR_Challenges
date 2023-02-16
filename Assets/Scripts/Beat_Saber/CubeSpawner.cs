@@ -12,6 +12,8 @@ public class CubeSpawner : MonoBehaviour
 
     [SerializeField] int numberOfCubesInThePool = 30;
     private List<GameObject> disabledCubes = new List<GameObject>();
+    private List<Cube> disabledCubesClassCube = new List<Cube>();
+    private List<BoxCollider> disabledCubesColliders = new List<BoxCollider>();
 
 
     void Start()
@@ -40,33 +42,45 @@ public class CubeSpawner : MonoBehaviour
         {
             GameObject cubeToSpawn = disabledCubes[0];
             disabledCubes.RemoveAt(0);
-            Cube cubeClassOfCubeToSpawn = cubeToSpawn.GetComponent<Cube>();
-            cubeClassOfCubeToSpawn.speed = speedOfCubes;
-            cubeClassOfCubeToSpawn.ChoseColor();
+
+            Cube cubeClass = disabledCubesClassCube[0];
+            disabledCubesClassCube.RemoveAt(0);
+
+            BoxCollider cubeCollider = disabledCubesColliders[0];
+            disabledCubesColliders.RemoveAt(0);
+
+            cubeClass.speed = speedOfCubes;
+            cubeClass.ChoseColor();
             int orientation = Random.Range(0, 4) * 90;
-            cubeClassOfCubeToSpawn.transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);
-            cubeClassOfCubeToSpawn.isTouched = false;
-            cubeClassOfCubeToSpawn.isTouchedFromRightDirection = false;
-            cubeClassOfCubeToSpawn.isActive = true;
-            cubeClassOfCubeToSpawn.orientation = orientation;
+            cubeToSpawn.transform.position = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 10);
+            cubeClass.isTouched = false;
+            cubeClass.isTouchedFromRightDirection = false;
+            cubeClass.isActive = true;
+            cubeCollider.enabled = true;
+            cubeClass.orientation = orientation;
             cubeToSpawn.transform.rotation = Quaternion.identity;
-            cubeToSpawn.transform.Rotate(cubeToSpawn.transform.forward, orientation);
+            cubeToSpawn.transform.Rotate(cubeToSpawn.transform.forward, orientation);            
             cubeToSpawn.SetActive(true);
         }
         StartCoroutine(spawnCube());
     }
 
 
-    public void AddCubeToDisabledList(GameObject cubeToAdd)
+    public void AddCubeToDisabledList(GameObject cubeToAdd, Cube cubeClass, BoxCollider collider)
     {
-        disabledCubes.Add(cubeToAdd.gameObject);
+        disabledCubes.Add(cubeToAdd);
+        disabledCubesClassCube.Add(cubeClass);
+        disabledCubesColliders.Add(collider);
     }
 
     private void InstantiateCubes()
     {
         for (int i = 0; i < numberOfCubesInThePool; i++)
         {
-            disabledCubes.Add(Instantiate(cubePrefab));
+            GameObject newCube = Instantiate(cubePrefab);
+            disabledCubes.Add(newCube);
+            disabledCubesClassCube.Add(newCube.GetComponent<Cube>());
+            disabledCubesColliders.Add(newCube.GetComponent<BoxCollider>());
         }
     }
 }

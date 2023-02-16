@@ -30,6 +30,8 @@ public class Cube : MonoBehaviour
 
     private Beat_Saber_GM gameManager;
 
+    private BoxCollider boxCollider;
+
     public bool isTouched;
     public bool isTouchedFromRightDirection;
     public bool isActive = true;                    // isActive nous sert juste à ne pas déclencher plusieurs fois le son wrongBell.
@@ -44,6 +46,8 @@ public class Cube : MonoBehaviour
         cubeSpawner = GameObject.Find("CubeSpawner").GetComponent<CubeSpawner>();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<Beat_Saber_GM>();
+
+        boxCollider = GetComponent<BoxCollider>();
 
         transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
 
@@ -78,7 +82,7 @@ public class Cube : MonoBehaviour
 
     private void OnDisable()
     {
-        cubeSpawner.AddCubeToDisabledList(transform.gameObject);
+        cubeSpawner.AddCubeToDisabledList(transform.gameObject, this, boxCollider);
     }
 
 
@@ -145,10 +149,11 @@ public class Cube : MonoBehaviour
 
                 if (angle < toleranceAngle)
                 {
-                    isTouchedFromRightDirection = true;
+                    isTouchedFromRightDirection = true;                    
                 }
             }
             isTouched = true;
+            boxCollider.enabled = false;
         }
     }
 

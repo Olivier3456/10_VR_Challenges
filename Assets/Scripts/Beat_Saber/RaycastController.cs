@@ -35,7 +35,7 @@ public class RaycastController : MonoBehaviour
 
         float raycastLength = distance * lengthMultiplier;
         if (raycastLength < minimalLength) raycastLength = minimalLength;
-
+       
         if (debugMod) Debug.DrawLine(actualPosition, actualPosition + direction * raycastLength, UnityEngine.Color.green);
 
         RaycastHit hit;
