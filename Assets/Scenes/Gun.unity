@@ -2537,6 +2537,11 @@ PrefabInstance:
       objectReference: {fileID: 944355076}
     - target: {fileID: 5305236849871195266, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305236849871195266, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1259977029}
@@ -4309,6 +4314,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 944355076}
+    - target: {fileID: 5305236849871195266, guid: 23ee80bcd3a720948b6157632392be3d,
+        type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5305236849871195266, guid: 23ee80bcd3a720948b6157632392be3d,
         type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target

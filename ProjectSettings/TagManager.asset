@@ -13,6 +13,7 @@ TagManager:
   - Blue_Saber
   - Red_Saber
   - Cube
+  - Plantable
   layers:
   - Default
   - TransparentFX
