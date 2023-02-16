@@ -1703,8 +1703,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5897171600362148315, guid: b61f972608c9f4949b9b80f042f280f0,
         type: 3}
-      propertyPath: minMovementAngleToPlant
+      propertyPath: minSpeedToPlant
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897171600362148315, guid: b61f972608c9f4949b9b80f042f280f0,
+        type: 3}
+      propertyPath: minKnifeAngleToPlant
       value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897171600362148315, guid: b61f972608c9f4949b9b80f042f280f0,
+        type: 3}
+      propertyPath: minMovementAngleToPlant
+      value: 110
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b61f972608c9f4949b9b80f042f280f0, type: 3}

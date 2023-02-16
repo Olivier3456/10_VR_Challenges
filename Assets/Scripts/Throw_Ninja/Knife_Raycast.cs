@@ -16,6 +16,8 @@ public class Knife_Raycast : MonoBehaviour
 
     [SerializeField] private Rigidbody knifeRb;
 
+    [SerializeField] private AudioSource audioSource;
+
     public bool isPlanted = false;
 
     void Start()
@@ -51,7 +53,7 @@ public class Knife_Raycast : MonoBehaviour
                         if (angleOfKnifeToHitNormal > minKnifeAngleToPlant)
                         {
                             float angleOfKnifeMovementToHitNormal = Vector3.Angle(hit.normal, direction);
-                            Debug.Log("Angle entre la direction du couteau et le plan du point hit : " + angleOfKnifeMovementToHitNormal);
+                            Debug.Log("Angle entre la direction du mouvement du couteau et le plan du point hit : " + angleOfKnifeMovementToHitNormal);
 
                             if (angleOfKnifeMovementToHitNormal > minMovementAngleToPlant)
                             {
@@ -65,6 +67,7 @@ public class Knife_Raycast : MonoBehaviour
                                     knifeRb.constraints = knifeRb.constraints | RigidbodyConstraints.FreezeRotation;
                                     Debug.Log("Le couteau s'est planté.");
                                     isPlanted = true;
+                                    audioSource.Play();
                                 }
                             }
                         }
