@@ -38,7 +38,7 @@ public class Knife_Raycast : MonoBehaviour
         if (isPlanted == false)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, direction, out hit, distanceFromLastFrame))
+            if (Physics.Raycast(transform.position, direction, out hit, maxDistToPlant))
             {
                 if (hit.transform.gameObject.CompareTag("Plantable"))
                 {
@@ -57,15 +57,16 @@ public class Knife_Raycast : MonoBehaviour
 
                             if (angleOfKnifeMovementToHitNormal > minMovementAngleToPlant)
                             {
-                                float speed = distanceFromLastFrame / Time.deltaTime;
-                                // float speed = knifeRb.velocity.magnitude;
+                                float speed = distanceFromLastFrame / Time.deltaTime;                                
                                 Debug.Log("Vitesse du couteau : " + speed);
 
                                 if (speed > minSpeedToPlant)
                                 {
+                                    Vector3 knifePlantVector = transform.forward * 0.2f;
+                                    knifeRb.transform.position = hit.point - knifePlantVector; // Pour que le couteau "se plante" un peu dans le mur
                                     knifeRb.constraints = knifeRb.constraints | RigidbodyConstraints.FreezePosition;
                                     knifeRb.constraints = knifeRb.constraints | RigidbodyConstraints.FreezeRotation;
-                                    Debug.Log("Le couteau s'est planté.");
+                                    Debug.Log("Le couteau s'est planté. Il s'est enfoncé de " + knifePlantVector + " cm.");
                                     isPlanted = true;
                                     audioSource.Play();
                                 }
