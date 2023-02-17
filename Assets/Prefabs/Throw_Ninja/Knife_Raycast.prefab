@@ -481,10 +481,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistToPlant: 0.05
-  minKnifeAngleToPlant: 140
-  minMovementAngleToPlant: 110
-  minSpeedToPlant: 2.5
-  maxAngleBetweenKnifeAndItsMovement: 25
+  minKnifeAngleToPlant: 130
+  minMovementAngleToPlant: 100
+  minSpeedToPlant: 2
+  maxAngleBetweenKnifeAndItsMovement: 30
   delayBeforeNextPlantWhenGrabbed: 0.5
   knifeRb: {fileID: 2572465959263632380}
   audioSource: {fileID: 1655765030}
