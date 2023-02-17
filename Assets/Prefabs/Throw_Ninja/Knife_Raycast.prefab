@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 2572465959263632380}
-  forceMultiplier: 0.1
+  forceMultiplier: 0.2
 --- !u!1 &2078959635868957531
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,10 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3617733cb2f59eb46bb1048d0806c6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistToPlant: 0.05
-  minKnifeAngleToPlant: 130
-  minMovementAngleToPlant: 100
-  minSpeedToPlant: 2
+  minKnifeAngleToPlant: 140
+  minMovementAngleToPlant: 110
+  minSpeedToPlant: 1.75
   maxAngleBetweenKnifeAndItsMovement: 30
   delayBeforeNextPlantWhenGrabbed: 0.5
   knifeRb: {fileID: 2572465959263632380}

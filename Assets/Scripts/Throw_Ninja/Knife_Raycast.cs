@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Knife_Raycast : MonoBehaviour
 {
-    [SerializeField] private float maxDistToPlant = 0.05f;
-    [SerializeField] private float minKnifeAngleToPlant = 150f;
-    [SerializeField] private float minMovementAngleToPlant = 140f;
-    [SerializeField] private float minSpeedToPlant = 3f;
-    [SerializeField] private float maxAngleBetweenKnifeAndItsMovement = 25f;
+    private float maxDistToPlant = 1f;
+    [SerializeField] private float minKnifeAngleToPlant = 140f;
+    [SerializeField] private float minMovementAngleToPlant = 120f;
+    [SerializeField] private float minSpeedToPlant = 2f;
+    [SerializeField] private float maxAngleBetweenKnifeAndItsMovement = 30f;
 
     [SerializeField] private float delayBeforeNextPlantWhenGrabbed = 0.5f;
 
@@ -49,7 +49,7 @@ public class Knife_Raycast : MonoBehaviour
                                 // très importante, doit pouvoir permettre au couteau de se planter, même si ses angles ne sont pas optimaux.
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistToPlant))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistToPlant * Time.deltaTime))
             {
                 if (hit.transform.gameObject.CompareTag("Plantable"))
                 {
@@ -83,7 +83,7 @@ public class Knife_Raycast : MonoBehaviour
                                 float angleFromKnifeToKnifeMovement = Vector3.Angle(MovementDirection, transform.forward);
                                 Debug.Log("Angle entre le couteau et son mouvement : " + angleFromKnifeToKnifeMovement);
 
-                                if (angleFromKnifeToKnifeMovement + speed * 2 < maxAngleBetweenKnifeAndItsMovement)
+                                if (angleFromKnifeToKnifeMovement < maxAngleBetweenKnifeAndItsMovement + speed * 2)
                                 {
                                     float halfKnifeLength = 0.24f;
                                     Vector3 knifePlantVector = transform.forward * (halfKnifeLength - (speed * 0.01f));
