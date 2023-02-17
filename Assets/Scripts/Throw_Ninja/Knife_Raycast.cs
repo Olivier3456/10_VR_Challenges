@@ -8,7 +8,7 @@ public class Knife_Raycast : MonoBehaviour
     [SerializeField] private float minKnifeAngleToPlant = 150f;
     [SerializeField] private float minMovementAngleToPlant = 140f;
     [SerializeField] private float minSpeedToPlant = 3f;
-    [SerializeField] private float maxAngleBetweenKnifeAndItsMovement = 20f;
+    [SerializeField] private float maxAngleBetweenKnifeAndItsMovement = 25f;
 
     [SerializeField] private float delayBeforeNextPlantWhenGrabbed = 0.5f;
 
@@ -52,7 +52,9 @@ public class Knife_Raycast : MonoBehaviour
         Vector3 direction = (actualPosition - lastPosition).normalized;
 
 
-        if (isPlanted == false)
+        if (isPlanted == false) // Pour mieux faire, au lieu de cette cascade de if, il faudrait que chaque critère influe sur un même nombre
+                                // dont la valeur finale déterminera si le couteau se plante ou non. Par exemple, la vitesse, si elle est
+                                // très importante, doit pouvoir permettre au couteau de se planter, même si ses angles ne sont pas optimaux.
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, direction, out hit, maxDistToPlant))
@@ -89,7 +91,7 @@ public class Knife_Raycast : MonoBehaviour
                                     if (speed > minSpeedToPlant)
                                     {
                                         float halfKnifeLength = 0.24f;
-                                        Vector3 knifePlantVector = transform.forward * ((halfKnifeLength) - (speed * 0.01f));
+                                        Vector3 knifePlantVector = transform.forward * (halfKnifeLength - (speed * 0.01f));
                                         knifeRb.transform.position = hit.point - knifePlantVector; // Pour que le couteau "se plante" un peu dans le mur
                                         knifeRb.constraints = knifeRb.constraints | RigidbodyConstraints.FreezePosition;
                                         knifeRb.constraints = knifeRb.constraints | RigidbodyConstraints.FreezeRotation;
