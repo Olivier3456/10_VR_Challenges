@@ -25,7 +25,6 @@ public class Knife_Raycast : MonoBehaviour
 
     public void GrabKnife() // Don't forget to call this method when the player grabs the knife!
     {
-
         knifeRb.constraints &= ~RigidbodyConstraints.FreezePosition;
         knifeRb.constraints &= ~RigidbodyConstraints.FreezeRotation;
         StartCoroutine(DelayBeforeNextPlant());
@@ -34,9 +33,9 @@ public class Knife_Raycast : MonoBehaviour
 
     void Start()
     {
-        lastPosition = transform.position;
-        actualPosition = transform.position;
         lastLastPosition = transform.position;
+        lastPosition = transform.position;
+        actualPosition = transform.position;        
     }
 
 
