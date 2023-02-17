@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Punches : MonoBehaviour
 {
-    [SerializeField] private Transform rightHand;
-    [SerializeField] private Transform leftHand;
+    [SerializeField] private Transform hand;    
     [Space(5)]
     [SerializeField] private TextMeshProUGUI highestCounterText;
     [SerializeField] private TextMeshProUGUI lowestCounterText;
@@ -14,25 +13,26 @@ public class Punches : MonoBehaviour
     [SerializeField] private Transform camera;
     [Space(10)]
     [SerializeField] private float timeTrack = 0.1f;
+    [SerializeField] private float minDistBetweenTwoMesures = 0.01f;
 
-    private Queue<float> rightHandLastDistances = new Queue<float>();
-    private Queue<float> leftHandLastDistances = new Queue<float>();
+
+    private Queue<float> lastDistances = new Queue<float>();  
 
     private int frame = 0;
 
-    private Vector3 lastRightHandPosition;
+    private Vector3 lastPosition;
         
-    private float lastHightestDistRight;
-    private float lastShortestDistRight;
+    private float lastHightestDist;
+    private float lastShortestDist;
 
-    private int countFromLastHighestDistRight = 0;
-    private int countFromLastShortestDistRight = 0;
+    private int countFromLastHighestDist = 0;
+    private int countFromLastShortestDist = 0;
 
-    private int highestDistanceRightCount = 0;
-    private int shortestDistanceRightCount = 0;
+    private int highestDistanceCount = 0;
+    private int shortestDistanceCount = 0;
 
-    private bool highestCountAlready;
-    private bool shortestCountAlready;
+    private bool highestCountAlreadyDone;
+    private bool shortestCountAlreadyDone;
 
     
 
@@ -45,69 +45,85 @@ public class Punches : MonoBehaviour
 
     void Update()
     {
-        float handDistanceFromLastFrame = Vector3.Distance(rightHand.position, lastRightHandPosition);
-        if (handDistanceFromLastFrame > 0.01f)      // Elimine les faux comptages de highest/shortest distances quand la main ne bouge pas ou presque.
+        float handDistanceFromLastFrame = Vector3.Distance(hand.position, lastPosition);
+        if (handDistanceFromLastFrame > minDistBetweenTwoMesures)      // Eliminate false highest/shortest counts when the hand moves too slow.
         {
 
-            float rightHandDistance = Vector3.Distance(rightHand.transform.position, camera.position);
-            float leftHandDistance = Vector3.Distance(leftHand.transform.position, camera.position);
+            float handDist = Vector3.Distance(hand.transform.position, camera.position);
 
-            rightHandLastDistances.Enqueue(rightHandDistance);
-            leftHandLastDistances.Enqueue(leftHandDistance);
+            CollectLastPosition(handDist);
 
-            frame++;
-            if (frame >= timeTrack)     // Nous aurons donc toujours le même nombre d'images dans les queues, l'entier supérieur le plus proche de timeTrack (je crois).
-            {
-                rightHandLastDistances.Dequeue();
-                leftHandLastDistances.Dequeue();
-            }
+            float maxDist = 0;
+            float minDist = 10000;
+            FindMinAndMaxDistancesInLastPositions(ref maxDist, ref minDist);
 
-            float maxDistRightHand = 0;
-            float minDistRightHand = 10000;
-            foreach (float distance in rightHandLastDistances)
-            {
-                if (distance <= minDistRightHand) minDistRightHand = distance;
-                else if (distance >= maxDistRightHand) maxDistRightHand = distance;
-            }
+            LooksIfTheHandMovesAwayOrTowards(handDist, maxDist, minDist);
 
-
-            if (rightHandDistance == maxDistRightHand)
-            {
-                lastHightestDistRight = rightHandDistance;
-                countFromLastHighestDistRight = 0;
-                countFromLastShortestDistRight++;
-                highestCountAlready = false;
-            }
-            else if (rightHandDistance == minDistRightHand)
-            {
-                lastShortestDistRight = rightHandDistance;
-                countFromLastHighestDistRight++;
-                countFromLastShortestDistRight = 0;
-                shortestCountAlready = false;
-            }
-            else
-            {
-                countFromLastHighestDistRight++;
-                countFromLastShortestDistRight++;
-            }
-
-
-            if (countFromLastHighestDistRight >= timeTrack && !highestCountAlready)
-            {
-                highestCountAlready = true;
-                highestDistanceRightCount++;
-                highestCounterText.text = "Nb highest dist: " + highestDistanceRightCount;
-            }
-            if (countFromLastShortestDistRight >= timeTrack && !shortestCountAlready)
-            {
-                shortestCountAlready = true;
-                shortestDistanceRightCount++;
-                lowestCounterText.text = "Nb highest dist: " + shortestDistanceRightCount;
-            }
-
-
-
+            CounterOfMinOrMaxDistances();
         }
-        lastRightHandPosition = rightHand.position;
+        lastPosition = hand.position;
+    }
+
+   
+
+    private void CounterOfMinOrMaxDistances()
+    {
+        if (countFromLastHighestDist >= timeTrack && !highestCountAlreadyDone)
+        {
+            highestCountAlreadyDone = true;
+            highestDistanceCount++;
+            highestCounterText.text = "Nb highest dist: " + highestDistanceCount;
+        }
+        if (countFromLastShortestDist >= timeTrack && !shortestCountAlreadyDone)
+        {
+            shortestCountAlreadyDone = true;
+            shortestDistanceCount++;
+            lowestCounterText.text = "Nb highest dist: " + shortestDistanceCount;
+        }
+    }
+
+    private void LooksIfTheHandMovesAwayOrTowards(float handDist, float maxDist, float minDist)
+    {
+        if (handDist == maxDist)
+        {
+            lastHightestDist = handDist;
+            countFromLastHighestDist = 0;
+            countFromLastShortestDist++;
+            highestCountAlreadyDone = false;
+        }
+        else if (handDist == minDist)
+        {
+            lastShortestDist = handDist;
+            countFromLastHighestDist++;
+            countFromLastShortestDist = 0;
+            shortestCountAlreadyDone = false;
+        }
+        else
+        {
+            countFromLastHighestDist++;
+            countFromLastShortestDist++;
+        }
+    }
+
+
+    private void FindMinAndMaxDistancesInLastPositions(ref float maxDist, ref float minDist)
+    {
+        foreach (float distance in lastDistances)
+        {
+            if (distance <= minDist) minDist = distance;
+            else if (distance >= maxDist) maxDist = distance;
+        }
+    }
+
+
+    private void CollectLastPosition(float handDistance)
+    {
+        lastDistances.Enqueue(handDistance);
+
+        frame++;
+        if (frame >= timeTrack)     // Nous aurons donc toujours le même nombre d'images dans les queues, l'entier supérieur le plus proche de timeTrack (je crois).
+        {
+            lastDistances.Dequeue();
+        }
     }
 }
