@@ -10,6 +10,7 @@ public class Punches3 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highestCounterText;
     [SerializeField] private TextMeshProUGUI lowestCounterText;
     [SerializeField] private TextMeshProUGUI movementAmplitudeText;
+    [SerializeField] private TextMeshProUGUI handSpeedText;
     [Space(5)]
     [Tooltip("Must be a child object of the camera, positioned at least 1m behind it, to avoid player hands going behind this point.")]
     [SerializeField] private Transform handReferencePoint;
@@ -17,6 +18,8 @@ public class Punches3 : MonoBehaviour
     private float minDiffHandDistance = 0.01f;
     private float lastHandDist;
 
+    private float speed = 0;
+    [SerializeField] float speedDisplayFrequency = 0.1f;
 
     private float lastHightestDist = 0;
     private float lastShortestDist = Mathf.Infinity;
@@ -28,7 +31,8 @@ public class Punches3 : MonoBehaviour
 
     void Start()
     {
-        lastHandDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);
+        lastHandDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);        
+        StartCoroutine(DisplaySpeed());     // Limits the frequency of speed display.
     }
 
 
@@ -37,29 +41,44 @@ public class Punches3 : MonoBehaviour
         float handDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);
 
         float diffHandDistance = Mathf.Abs(handDist - lastHandDist);
-        Debug.Log("diffHandDistance = " + diffHandDistance);
-
+        
         if (diffHandDistance > minDiffHandDistance)          // Eliminate false highest/shortest counts when the hand moves too slow.
         {
-            if (handDist > lastHandDist && !handDistIncreasing)
+            speed = (diffHandDistance / Time.deltaTime) * 3.6f;
+
+            if (!handDistIncreasing && handDist > lastHandDist)
             {
                 lastShortestDist = handDist;
                 handDistIncreasing = true;
                 shortestDistanceCount++;
-                lowestCounterText.text = "Nb of shortest distance: " + shortestDistanceCount;
+                lowestCounterText.text = "Returns: " + shortestDistanceCount;
+                DisplayAmplitude();
             }
-            
-            if (handDist < lastHandDist && handDistIncreasing)
+
+            if (handDistIncreasing && handDist < lastHandDist)
             {
                 lastHightestDist = handDist;
                 handDistIncreasing = false;
                 highestDistanceCount++;
-                highestCounterText.text = "Nb of highest distance: " + highestDistanceCount;
+                highestCounterText.text = "Punches: " + highestDistanceCount;
+                DisplayAmplitude();
             }
-
-            movementAmplitudeText.text = "Movement Amplitude: " + (lastHightestDist - lastShortestDist).ToString("F2");   // N'affichera que deux nombres après la virgule.
         }
 
-            lastHandDist = handDist;
+        lastHandDist = handDist;
     }
+
+    private void DisplayAmplitude()
+    {
+        movementAmplitudeText.text = "Amplitude: " + ((lastHightestDist - lastShortestDist) * 100).ToString("F0") + " cm";
+    }
+
+    IEnumerator DisplaySpeed()
+    {
+        yield return new WaitForSeconds(speedDisplayFrequency);
+        handSpeedText.text = "Hand speed: " + speed.ToString("F0") + " km/h";
+        StartCoroutine(DisplaySpeed());
+    }
+
+
 }
