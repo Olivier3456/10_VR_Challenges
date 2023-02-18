@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Punches : MonoBehaviour
 {
-    [SerializeField] private Transform hand;    
+    [SerializeField] private Transform hand;
     [Space(5)]
     [SerializeField] private TextMeshProUGUI highestCounterText;
     [SerializeField] private TextMeshProUGUI lowestCounterText;
@@ -13,17 +13,16 @@ public class Punches : MonoBehaviour
     [Space(5)]
     [Tooltip("Must be a child object of the camera, positioned about 1m behind it.")]
     [SerializeField] private Transform handReferencePoint;
-    [Space(10)]
-    [SerializeField] private float timeTrack = 0.1f;
-    [SerializeField] private float minDistBetweenTwoMesures = 0.01f;
-
-
-    private Queue<float> lastDistances = new Queue<float>();  
+   
+    private float timeTrack = 0.1f;
+    private float minDiffHandDistance = 0.01f;
+    
+    private Queue<float> lastDistances = new Queue<float>();
 
     private int frame = 0;
+       
+    private float lastHandDist;
 
-    private Vector3 lastPosition;
-        
     private float lastHightestDist;
     private float lastShortestDist;
 
@@ -34,22 +33,24 @@ public class Punches : MonoBehaviour
     private int shortestDistanceCount = 0;
 
     private bool highestCountAlreadyDone;
-    private bool shortestCountAlreadyDone;    
+    private bool shortestCountAlreadyDone;
 
 
     void Start()
     {
-        timeTrack /= Time.deltaTime;    
+        lastHandDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);
     }
 
-
+    
     void Update()
-    {
-        float handDistanceFromLastFrame = Vector3.Distance(hand.position, lastPosition);
-        if (handDistanceFromLastFrame > minDistBetweenTwoMesures)          // Eliminate false highest/shortest counts when the hand moves too slow.
-        {
-            float handDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);
+    {      
+        float handDist = Vector3.Distance(hand.transform.position, handReferencePoint.position);
 
+        float diffHandDistance = Mathf.Abs(handDist - lastHandDist);
+        Debug.Log("diffHandDistance = " + diffHandDistance);
+
+        if (diffHandDistance > minDiffHandDistance)          // Eliminate false highest/shortest counts when the hand moves too slow.
+        {
             CollectLastPosition(handDist);
 
             float maxDist = 0;
@@ -60,22 +61,25 @@ public class Punches : MonoBehaviour
 
             CounterOfExtremeDistances();
 
-            movementAmplitudeText.text = "Movement Amplitude: " + (lastHightestDist - lastShortestDist);
+            movementAmplitudeText.text = "Movement Amplitude: " + (lastHightestDist - lastShortestDist).ToString("F2");   // N'affichera que deux nombres après la virgule.
         }
-        lastPosition = hand.position;
+        
+        lastHandDist = handDist;
     }
 
-   
+
 
     private void CounterOfExtremeDistances()
     {
-        if (countFromLastHighestDist >= timeTrack && !highestCountAlreadyDone)
+        float instantTimeTrack = timeTrack / Time.deltaTime;
+
+        if (countFromLastHighestDist >= instantTimeTrack && !highestCountAlreadyDone)
         {
             highestCountAlreadyDone = true;
             highestDistanceCount++;
             highestCounterText.text = "Nb of highest distance: " + highestDistanceCount;
         }
-        if (countFromLastShortestDist >= timeTrack && !shortestCountAlreadyDone)
+        if (countFromLastShortestDist >= instantTimeTrack && !shortestCountAlreadyDone)
         {
             shortestCountAlreadyDone = true;
             shortestDistanceCount++;
@@ -122,9 +126,11 @@ public class Punches : MonoBehaviour
         lastDistances.Enqueue(handDistance);
 
         frame++;
-        if (frame >= timeTrack)     // We will always have the same number of frames in the queue, the closest integer to timeTrack (I suppose).
+        if (frame > 4)     // We will always have the same number of frames in the queue.
         {
             lastDistances.Dequeue();
+
+            Debug.Log("Images dans la queue : " + lastDistances.Count);
         }
     }
 }
